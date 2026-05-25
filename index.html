@@ -1,0 +1,3526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sistema de control de novedades de Administradores de Tienda - Muebles Jamar" />
+  <title>Jamar · Control de Administradores</title>
+
+  <!-- Tipografías corporativas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Iconos (Phosphor Icons CDN) -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+  <style>
+/* ============================================================
+   JAMAR · CONTROL DE PERSONAL
+   Hoja de estilos corporativa
+   ============================================================ */
+
+/* ----------- Variables y Reset ----------- */
+:root {
+  /* Paleta corporativa Jamar */
+  --jamar-red: #C8102E;
+  --jamar-red-dark: #9A0C24;
+  --jamar-red-light: #E8324F;
+  --jamar-red-soft: #FDECEF;
+
+  /* Neutros */
+  --bg: #F7F8FA;
+  --bg-elevated: #FFFFFF;
+  --bg-subtle: #F1F3F7;
+  --bg-hover: #EEF0F4;
+
+  --border: #E4E7EC;
+  --border-soft: #EFF1F5;
+  --border-strong: #D0D5DD;
+
+  --text: #101828;
+  --text-secondary: #475467;
+  --text-muted: #98A2B3;
+  --text-inverse: #FFFFFF;
+
+  /* Semáforo */
+  --green: #12B76A;
+  --green-bg: #ECFDF3;
+  --green-soft: #D1FADF;
+  --green-dark: #027A48;
+
+  --yellow: #F79009;
+  --yellow-bg: #FFFAEB;
+  --yellow-soft: #FEF0C7;
+  --yellow-dark: #B54708;
+
+  --red: #F04438;
+  --red-bg: #FEF3F2;
+  --red-soft: #FEE4E2;
+  --red-dark: #B42318;
+
+  --blue: #2E90FA;
+  --blue-bg: #EFF8FF;
+  --blue-soft: #D1E9FF;
+  --blue-dark: #1849A9;
+
+  --purple: #7A5AF8;
+  --purple-bg: #F4F3FF;
+  --purple-soft: #EBE9FE;
+  --purple-dark: #5925DC;
+
+  /* Tipos de novedades (colores en calendario) */
+  --c-vacaciones: #12B76A;
+  --c-permisos: #F79009;
+  --c-incapacidades: #F04438;
+  --c-licencias: #7A5AF8;
+  --c-ausencias: #2E90FA;
+  --c-otros: #475467;
+
+  /* Sombras */
+  --shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.04);
+  --shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.06), 0 1px 2px rgba(16, 24, 40, 0.04);
+  --shadow-md: 0 4px 8px -2px rgba(16, 24, 40, 0.07), 0 2px 4px -2px rgba(16, 24, 40, 0.04);
+  --shadow-lg: 0 12px 24px -4px rgba(16, 24, 40, 0.10), 0 4px 8px -2px rgba(16, 24, 40, 0.05);
+  --shadow-xl: 0 24px 48px -8px rgba(16, 24, 40, 0.15);
+
+  /* Radios */
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  /* Animaciones */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --sidebar-w: 264px;
+  --topbar-h: 72px;
+
+  /* Tipografía */
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Manrope', system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input, select, textarea { font-family: inherit; font-size: inherit; }
+
+/* Scrollbar sutil */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D0D5DD; border-radius: 10px; border: 2px solid transparent; background-clip: padding-box; }
+::-webkit-scrollbar-thumb:hover { background: #98A2B3; background-clip: padding-box; border: 2px solid transparent; }
+
+/* ============================ LAYOUT ============================ */
+.app {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  min-height: 100vh;
+}
+
+/* ============================ SIDEBAR ============================ */
+.sidebar {
+  background: var(--bg-elevated);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 30;
+}
+
+.sidebar-header {
+  padding: 22px 20px 18px;
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--jamar-red) 0%, var(--jamar-red-dark) 100%);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+  box-shadow: 0 6px 16px -4px rgba(200, 16, 46, 0.45);
+  position: relative;
+}
+.brand-logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,0.2), transparent 50%);
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  color: var(--text);
+}
+.brand-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  margin-top: 2px;
+}
+
+.sidebar-close { display: none; }
+
+.nav {
+  flex: 1;
+  padding: 16px 12px;
+  overflow-y: auto;
+}
+
+.nav-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 14px 12px 6px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+  transition: all 0.18s var(--ease);
+  position: relative;
+}
+.nav-item i { font-size: 18px; flex-shrink: 0; }
+.nav-item:hover {
+  background: var(--bg-subtle);
+  color: var(--text);
+}
+.nav-item.active {
+  background: var(--jamar-red-soft);
+  color: var(--jamar-red);
+  font-weight: 600;
+}
+.nav-item.active::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  background: var(--jamar-red);
+  border-radius: 0 3px 3px 0;
+}
+.nav-count {
+  margin-left: auto;
+  background: var(--bg-subtle);
+  color: var(--text-secondary);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-weight: 600;
+  min-width: 22px;
+  text-align: center;
+}
+.nav-item.active .nav-count {
+  background: var(--jamar-red);
+  color: #fff;
+}
+
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid var(--border-soft);
+}
+.storage-info {
+  background: var(--bg-subtle);
+  padding: 12px;
+  border-radius: var(--radius);
+}
+.storage-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.storage-label i { font-size: 14px; color: var(--jamar-red); }
+.storage-bar {
+  height: 4px;
+  background: var(--border);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.storage-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--jamar-red), var(--jamar-red-light));
+  border-radius: inherit;
+  transition: width 0.4s var(--ease-out);
+}
+.storage-text {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ============================ MAIN ============================ */
+.main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ============================ TOPBAR ============================ */
+.topbar {
+  height: var(--topbar-h);
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  gap: 16px;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.sidebar-toggle { display: none; }
+
+.topbar-title h1 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+.topbar-title p {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.search-wrapper i {
+  position: absolute;
+  left: 12px;
+  color: var(--text-muted);
+  font-size: 16px;
+  pointer-events: none;
+}
+.search-wrapper input {
+  background: var(--bg-subtle);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: 9px 14px 9px 36px;
+  width: 320px;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  transition: all 0.2s var(--ease);
+}
+.search-wrapper input:focus {
+  background: var(--bg-elevated);
+  border-color: var(--jamar-red);
+  box-shadow: 0 0 0 4px var(--jamar-red-soft);
+}
+
+/* ============================ BUTTONS ============================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: var(--radius);
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.18s var(--ease);
+  border: 1px solid transparent;
+}
+.btn i { font-size: 16px; }
+
+.btn-primary {
+  background: linear-gradient(180deg, var(--jamar-red) 0%, var(--jamar-red-dark) 100%);
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.btn-primary:hover {
+  background: linear-gradient(180deg, var(--jamar-red-light) 0%, var(--jamar-red) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px -2px rgba(200, 16, 46, 0.35);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-ghost {
+  background: var(--bg-subtle);
+  color: var(--text-secondary);
+}
+.btn-ghost:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.btn-danger {
+  background: var(--red-bg);
+  color: var(--red-dark);
+  border-color: var(--red-soft);
+}
+.btn-danger:hover { background: var(--red); color: #fff; border-color: var(--red); }
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius);
+  display: grid;
+  place-items: center;
+  color: var(--text-secondary);
+  background: var(--bg-subtle);
+  font-size: 18px;
+  transition: all 0.18s var(--ease);
+}
+.icon-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+/* ============================ KPI CARDS ============================ */
+.kpi-grid {
+  padding: 24px 28px 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+
+.kpi-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s var(--ease);
+  box-shadow: var(--shadow-xs);
+}
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.kpi-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.kpi-body { position: relative; z-index: 1; }
+.kpi-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 6px;
+}
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -0.6px;
+  margin-bottom: 6px;
+}
+.kpi-value-text { font-size: 16px; line-height: 1.2; }
+.kpi-trend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.kpi-trend i { font-size: 13px; }
+
+.kpi-spark {
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  opacity: 0.06;
+  z-index: 0;
+}
+
+.kpi-green   .kpi-icon { background: var(--green-bg);  color: var(--green-dark); }
+.kpi-green   .kpi-spark { background: var(--green); }
+.kpi-red     .kpi-icon { background: var(--red-bg);    color: var(--red-dark); }
+.kpi-red     .kpi-spark { background: var(--red); }
+.kpi-yellow  .kpi-icon { background: var(--yellow-bg); color: var(--yellow-dark); }
+.kpi-yellow  .kpi-spark { background: var(--yellow); }
+.kpi-blue    .kpi-icon { background: var(--blue-bg);   color: var(--blue-dark); }
+.kpi-blue    .kpi-spark { background: var(--blue); }
+.kpi-purple  .kpi-icon { background: var(--purple-bg); color: var(--purple-dark); }
+.kpi-purple  .kpi-spark { background: var(--purple); }
+.kpi-neutral .kpi-icon { background: var(--bg-subtle); color: var(--text); }
+.kpi-neutral .kpi-spark { background: var(--text); }
+
+/* ============================ VIEWS / PANELS ============================ */
+.view {
+  padding: 24px 28px;
+  display: grid;
+  gap: 20px;
+}
+.view-calendar {
+  grid-template-columns: 1fr 340px;
+  align-items: start;
+}
+.view-stats, .view-dashboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  overflow: hidden;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--border-soft);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.panel-header h2 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.2px;
+}
+
+.panel-header-sm {
+  padding: 18px 22px 8px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+.panel-header-sm h3 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+.panel-sub {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+/* ============================ CALENDAR ============================ */
+.calendar-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.calendar-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 12px;
+  color: var(--text);
+  letter-spacing: -0.2px;
+  text-transform: capitalize;
+}
+
+.calendar-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+.dot-vacaciones    { background: var(--c-vacaciones); }
+.dot-permisos      { background: var(--c-permisos); }
+.dot-incapacidades { background: var(--c-incapacidades); }
+.dot-licencias     { background: var(--c-licencias); }
+.dot-ausencias     { background: var(--c-ausencias); }
+.dot-otros         { background: var(--c-otros); }
+
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--border-soft);
+  background: #FAFBFC;
+  flex-wrap: wrap;
+}
+.filter-select {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12.5px;
+  color: var(--text);
+  font-weight: 500;
+  min-width: 160px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.18s var(--ease);
+}
+.filter-select:hover { border-color: var(--border-strong); }
+.filter-select:focus { border-color: var(--jamar-red); box-shadow: 0 0 0 3px var(--jamar-red-soft); }
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 12px 22px 6px;
+}
+.weekdays > div {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  text-align: center;
+  padding: 4px 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--border-soft);
+  padding: 0 22px 22px;
+}
+
+.day {
+  background: var(--bg-elevated);
+  min-height: 110px;
+  padding: 8px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.15s var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+}
+.day:hover {
+  background: var(--bg-subtle);
+  z-index: 2;
+}
+.day.out-of-month {
+  background: #FAFBFC;
+  opacity: 0.55;
+}
+.day.today .day-num {
+  background: var(--jamar-red);
+  color: #fff;
+  font-weight: 700;
+}
+.day.weekend {
+  background: #FCFCFD;
+}
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+.day-num {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text);
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+}
+.day-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 100px;
+  color: #fff;
+}
+.day-badge.verde    { background: var(--green); }
+.day-badge.amarillo { background: var(--yellow); }
+.day-badge.rojo     { background: var(--red); }
+
+.event {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+  border-left: 3px solid;
+  color: var(--text);
+  background: #fff;
+}
+.event.vacaciones    { border-color: var(--c-vacaciones);    background: rgba(18, 183, 106, 0.10); color: var(--green-dark); }
+.event.permisos      { border-color: var(--c-permisos);      background: rgba(247, 144, 9, 0.10); color: var(--yellow-dark); }
+.event.incapacidades { border-color: var(--c-incapacidades); background: rgba(240, 68, 56, 0.10); color: var(--red-dark); }
+.event.licencias     { border-color: var(--c-licencias);     background: rgba(122, 90, 248, 0.10); color: var(--purple-dark); }
+.event.ausencias     { border-color: var(--c-ausencias);     background: rgba(46, 144, 250, 0.10); color: var(--blue-dark); }
+.event.otros         { border-color: var(--c-otros);         background: var(--bg-subtle); color: var(--text); }
+
+.event-more {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 2px 6px;
+}
+
+/* ============================ SIDE PANELS ============================ */
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.store-occupancy {
+  padding: 12px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 380px;
+  overflow-y: auto;
+}
+.store-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.store-row-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+.store-name {
+  font-weight: 600;
+  color: var(--text);
+}
+.store-percent {
+  font-weight: 700;
+  color: var(--text-secondary);
+  font-size: 11.5px;
+}
+.store-bar {
+  height: 6px;
+  background: var(--bg-subtle);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.store-fill {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.5s var(--ease-out);
+}
+.store-fill.low    { background: var(--green); }
+.store-fill.med    { background: var(--yellow); }
+.store-fill.high   { background: var(--red); }
+
+.alerts-list {
+  padding: 12px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 360px;
+  overflow-y: auto;
+}
+.alert-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--radius);
+  background: var(--bg-subtle);
+  border-left: 3px solid;
+}
+.alert-item.rojo     { border-color: var(--red);    background: var(--red-bg); }
+.alert-item.amarillo { border-color: var(--yellow); background: var(--yellow-bg); }
+.alert-item.verde    { border-color: var(--green);  background: var(--green-bg); }
+.alert-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  background: #fff;
+  flex-shrink: 0;
+}
+.alert-item.rojo     .alert-icon { color: var(--red-dark); }
+.alert-item.amarillo .alert-icon { color: var(--yellow-dark); }
+.alert-item.verde    .alert-icon { color: var(--green-dark); }
+.alert-text {
+  flex: 1;
+  min-width: 0;
+}
+.alert-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.alert-desc {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.empty {
+  text-align: center;
+  padding: 32px 20px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.empty i { font-size: 32px; display: block; margin: 0 auto 8px; opacity: 0.5; }
+
+/* ============================ TABLE ============================ */
+.table-wrapper {
+  overflow-x: auto;
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.data-table thead th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px 16px;
+  background: #FAFBFC;
+  border-bottom: 1px solid var(--border-soft);
+  white-space: nowrap;
+}
+.data-table tbody td {
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--text);
+  border-bottom: 1px solid var(--border-soft);
+  vertical-align: middle;
+}
+.data-table tbody tr {
+  transition: background 0.15s var(--ease);
+}
+.data-table tbody tr:hover {
+  background: var(--bg-subtle);
+}
+.data-table tbody tr:last-child td { border-bottom: none; }
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.status-pill::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.status-pill.verde    { background: var(--green-bg); color: var(--green-dark); }
+.status-pill.verde::before { background: var(--green); }
+.status-pill.amarillo { background: var(--yellow-bg); color: var(--yellow-dark); }
+.status-pill.amarillo::before { background: var(--yellow); }
+.status-pill.rojo     { background: var(--red-bg); color: var(--red-dark); }
+.status-pill.rojo::before { background: var(--red); }
+
+.type-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.type-pill.vacaciones    { background: var(--green-bg);  color: var(--green-dark); }
+.type-pill.permisos      { background: var(--yellow-bg); color: var(--yellow-dark); }
+.type-pill.incapacidades { background: var(--red-bg);    color: var(--red-dark); }
+.type-pill.licencias     { background: var(--purple-bg); color: var(--purple-dark); }
+.type-pill.ausencias     { background: var(--blue-bg);   color: var(--blue-dark); }
+.type-pill.otros         { background: var(--bg-subtle); color: var(--text-secondary); }
+
+.employee-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--jamar-red), var(--jamar-red-dark));
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.employee-name { font-weight: 600; }
+
+.row-actions {
+  display: flex;
+  gap: 4px;
+}
+.row-action {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  background: transparent;
+  transition: all 0.15s var(--ease);
+  font-size: 15px;
+}
+.row-action:hover {
+  background: var(--bg-subtle);
+  color: var(--text);
+}
+.row-action.danger:hover { background: var(--red-bg); color: var(--red-dark); }
+
+/* ============================ DASHBOARD / DISTRIBUTION ============================ */
+.distribution-chart {
+  padding: 12px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.dist-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.dist-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dist-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: capitalize;
+}
+.dist-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+.dist-bar {
+  height: 8px;
+  background: var(--bg-subtle);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.dist-fill {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.6s var(--ease-out);
+}
+
+.upcoming-returns {
+  padding: 12px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 380px;
+  overflow-y: auto;
+}
+.return-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  background: var(--bg-subtle);
+  transition: all 0.15s var(--ease);
+  cursor: pointer;
+}
+.return-row:hover {
+  background: var(--bg-hover);
+  transform: translateX(2px);
+}
+.return-date {
+  width: 42px;
+  height: 42px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+.return-day {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+}
+.return-mon {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.return-info { flex: 1; min-width: 0; }
+.return-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.return-meta {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.return-countdown {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 100px;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.store-grid {
+  padding: 8px 22px 22px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.store-card {
+  padding: 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  transition: all 0.18s var(--ease);
+}
+.store-card:hover {
+  border-color: var(--jamar-red);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.store-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.store-card-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+.store-card-city {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.store-card-pill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 100px;
+}
+.store-card-stats {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.store-stat {
+  display: flex;
+  flex-direction: column;
+}
+.store-stat-num {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+.store-stat-lbl {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+/* ============================ STAT CARDS ============================ */
+.stat-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-xs);
+}
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text);
+  letter-spacing: -1px;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+.stat-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.stat-green  .stat-icon { background: var(--green-bg);  color: var(--green-dark); }
+.stat-yellow .stat-icon { background: var(--yellow-bg); color: var(--yellow-dark); }
+.stat-red    .stat-icon { background: var(--red-bg);    color: var(--red-dark); }
+
+.ranking {
+  padding: 12px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.rank-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  background: var(--bg-subtle);
+}
+.rank-pos {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--bg-elevated);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--text-secondary);
+  font-size: 13px;
+  border: 1px solid var(--border);
+}
+.rank-row:nth-child(1) .rank-pos { background: var(--jamar-red); color: #fff; border-color: transparent; }
+.rank-row:nth-child(2) .rank-pos { background: var(--jamar-red-light); color: #fff; border-color: transparent; }
+.rank-row:nth-child(3) .rank-pos { background: #F08496; color: #fff; border-color: transparent; }
+.rank-info { flex: 1; }
+.rank-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+}
+.rank-meta {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.rank-num {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.month-chart {
+  padding: 16px 22px 22px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 240px;
+}
+.month-bar-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  justify-content: flex-end;
+}
+.month-bar {
+  width: 100%;
+  background: linear-gradient(180deg, var(--jamar-red-light), var(--jamar-red));
+  border-radius: 6px 6px 0 0;
+  min-height: 4px;
+  transition: all 0.5s var(--ease-out);
+  position: relative;
+}
+.month-bar-value {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+}
+.month-bar-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.top-roles {
+  padding: 12px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.role-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.role-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+}
+.role-name {
+  font-weight: 600;
+  color: var(--text);
+}
+.role-count {
+  font-weight: 700;
+  color: var(--jamar-red);
+}
+.role-bar {
+  height: 6px;
+  background: var(--bg-subtle);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.role-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--jamar-red-light), var(--jamar-red));
+  border-radius: inherit;
+}
+
+/* ============================ STORE CARDS PAGE ============================ */
+.store-cards {
+  padding: 22px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+.store-card-lg {
+  padding: 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  position: relative;
+  transition: all 0.18s var(--ease);
+}
+.store-card-lg:hover {
+  border-color: var(--jamar-red);
+  box-shadow: var(--shadow-md);
+}
+.store-card-lg .store-card-name { font-size: 15px; }
+.store-card-actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 4px;
+}
+
+/* ============================ MODALS ============================ */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 24, 40, 0.55);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  animation: fadeIn 0.2s var(--ease);
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-xl);
+  animation: scaleIn 0.25s var(--ease-out);
+}
+.modal-lg { max-width: 760px; }
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.modal-header h2 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.modal-body {
+  padding: 22px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group-full { grid-column: 1 / -1; }
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  transition: all 0.18s var(--ease);
+  font-family: inherit;
+  width: 100%;
+}
+.form-group textarea { resize: vertical; min-height: 60px; }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--jamar-red);
+  box-shadow: 0 0 0 3px var(--jamar-red-soft);
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 18px 22px;
+  border-top: 1px solid var(--border-soft);
+  background: #FAFBFC;
+  margin: 22px -22px -22px;
+}
+
+/* Modal Day */
+.day-events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.day-event-card {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  align-items: center;
+}
+.day-event-card .avatar { width: 40px; height: 40px; font-size: 14px; }
+.day-event-info { flex: 1; min-width: 0; }
+.day-event-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.day-event-meta {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.day-event-actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* ============================ TOAST ============================ */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+.toast {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-lg);
+  min-width: 260px;
+  max-width: 380px;
+  animation: slideIn 0.3s var(--ease-out);
+  pointer-events: auto;
+  border-left: 4px solid var(--jamar-red);
+}
+.toast.success { border-left-color: var(--green); }
+.toast.error   { border-left-color: var(--red); }
+.toast.warning { border-left-color: var(--yellow); }
+.toast i { font-size: 20px; }
+.toast.success i { color: var(--green); }
+.toast.error i { color: var(--red); }
+.toast.warning i { color: var(--yellow); }
+.toast-text { font-size: 13px; font-weight: 600; color: var(--text); }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideOut {
+  to { opacity: 0; transform: translateX(20px); }
+}
+.toast.hiding { animation: slideOut 0.25s var(--ease) forwards; }
+
+/* ============================ RESPONSIVE ============================ */
+@media (max-width: 1280px) {
+  .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+  .view-calendar { grid-template-columns: 1fr; }
+  .side-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+}
+
+@media (max-width: 960px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .side-panel { grid-template-columns: 1fr; }
+  .search-wrapper input { width: 200px; }
+}
+
+@media (max-width: 768px) {
+  .app { grid-template-columns: 1fr; }
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 280px;
+    transform: translateX(-100%);
+    transition: transform 0.3s var(--ease-out);
+  }
+  .sidebar.open { transform: translateX(0); box-shadow: var(--shadow-xl); }
+  .sidebar-close { display: grid; }
+  .sidebar-toggle { display: grid; }
+
+  .topbar { padding: 0 16px; flex-wrap: wrap; height: auto; padding-block: 12px; gap: 10px; }
+  .topbar-right { width: 100%; }
+  .search-wrapper { flex: 1; }
+  .search-wrapper input { width: 100%; }
+
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); padding: 16px; gap: 10px; }
+  .view { padding: 16px; }
+  .kpi-value { font-size: 22px; }
+  .day { min-height: 80px; padding: 4px; }
+  .day-num { font-size: 11px; width: 20px; height: 20px; }
+  .event { font-size: 9.5px; padding: 2px 4px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .calendar-grid { padding: 0 10px 10px; }
+  .weekdays { padding: 8px 10px 4px; }
+  .weekdays > div { font-size: 9px; }
+  .filter-bar { padding: 10px 14px; }
+  .filter-select { min-width: 130px; font-size: 12px; }
+  .panel-header { padding: 14px 16px; }
+  .calendar-legend { display: none; }
+  .topbar-title h1 { font-size: 16px; }
+  .topbar-title p { display: none; }
+}
+
+@media (max-width: 480px) {
+  .kpi-grid { grid-template-columns: 1fr; }
+  .data-table { font-size: 12px; }
+  .data-table thead th, .data-table tbody td { padding: 10px 12px; }
+}
+
+/* Backdrop sidebar mobile */
+@media (max-width: 768px) {
+  .sidebar.open::after {
+    content: "";
+    position: fixed;
+    inset: 0 0 0 280px;
+    background: rgba(16, 24, 40, 0.45);
+    z-index: -1;
+  }
+}
+
+/* Utility */
+.hidden { display: none !important; }
+[hidden] { display: none !important; }
+
+</style>
+</head>
+<body>
+  <!-- ============================================================
+       APLICACIÓN PRINCIPAL
+       ============================================================ -->
+  <div class="app">
+    <!-- ============================ SIDEBAR ============================ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand">
+          <div class="brand-logo">
+            <span>J</span>
+          </div>
+          <div class="brand-text">
+            <div class="brand-name">JAMAR</div>
+            <div class="brand-sub">Admins de Tienda</div>
+          </div>
+        </div>
+        <button class="sidebar-close" id="sidebarClose" aria-label="Cerrar menú">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+
+      <nav class="nav">
+        <div class="nav-label">Principal</div>
+        <button class="nav-item active" data-view="calendar">
+          <i class="ph ph-calendar-blank"></i>
+          <span>Calendario</span>
+        </button>
+        <button class="nav-item" data-view="dashboard">
+          <i class="ph ph-chart-pie-slice"></i>
+          <span>Resumen general</span>
+        </button>
+
+        <div class="nav-label">Módulos</div>
+        <button class="nav-item" data-view="module" data-module="vacaciones">
+          <i class="ph ph-airplane-tilt"></i>
+          <span>Vacaciones</span>
+          <span class="nav-count" id="countVacaciones">0</span>
+        </button>
+        <button class="nav-item" data-view="module" data-module="permisos">
+          <i class="ph ph-clock-counter-clockwise"></i>
+          <span>Permisos</span>
+          <span class="nav-count" id="countPermisos">0</span>
+        </button>
+        <button class="nav-item" data-view="module" data-module="incapacidades">
+          <i class="ph ph-first-aid-kit"></i>
+          <span>Incapacidades</span>
+          <span class="nav-count" id="countIncapacidades">0</span>
+        </button>
+        <button class="nav-item" data-view="module" data-module="licencias">
+          <i class="ph ph-file-text"></i>
+          <span>Licencias</span>
+          <span class="nav-count" id="countLicencias">0</span>
+        </button>
+        <button class="nav-item" data-view="module" data-module="ausencias">
+          <i class="ph ph-user-minus"></i>
+          <span>Ausencias</span>
+          <span class="nav-count" id="countAusencias">0</span>
+        </button>
+
+        <div class="nav-label">Análisis</div>
+        <button class="nav-item" data-view="stats">
+          <i class="ph ph-chart-bar"></i>
+          <span>Estadísticas</span>
+        </button>
+        <button class="nav-item" data-view="tiendas">
+          <i class="ph ph-storefront"></i>
+          <span>Tiendas</span>
+        </button>
+
+        <div class="nav-label">Sistema</div>
+        <button class="nav-item" id="btnExport">
+          <i class="ph ph-download-simple"></i>
+          <span>Exportar datos</span>
+        </button>
+        <button class="nav-item" id="btnImport">
+          <i class="ph ph-upload-simple"></i>
+          <span>Importar datos</span>
+        </button>
+        <button class="nav-item" id="btnSettings">
+          <i class="ph ph-gear-six"></i>
+          <span>Configuración</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="storage-info">
+          <div class="storage-label">
+            <i class="ph ph-database"></i>
+            <span>Almacenamiento local</span>
+          </div>
+          <div class="storage-bar">
+            <div class="storage-fill" id="storageFill" style="width: 0%"></div>
+          </div>
+          <div class="storage-text" id="storageText">0 registros</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============================ MAIN ============================ -->
+    <main class="main">
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Abrir menú">
+            <i class="ph ph-list"></i>
+          </button>
+          <div class="topbar-title">
+            <h1 id="viewTitle">Calendario</h1>
+            <p id="viewSubtitle">Vista mensual de administradores</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="search-wrapper">
+            <i class="ph ph-magnifying-glass"></i>
+            <input type="text" id="globalSearch" placeholder="Buscar administrador o tienda..." />
+          </div>
+          <button class="btn btn-primary" id="btnNewRecord">
+            <i class="ph ph-plus"></i>
+            <span>Nuevo administrador</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- KPI CARDS -->
+      <section class="kpi-grid" id="kpiGrid">
+        <div class="kpi-card kpi-green">
+          <div class="kpi-icon"><i class="ph ph-airplane-tilt"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">En vacaciones</div>
+            <div class="kpi-value" id="kpiVacaciones">0</div>
+            <div class="kpi-trend"><i class="ph ph-arrow-up"></i><span id="kpiVacacionesTrend">Activos hoy</span></div>
+          </div>
+          <div class="kpi-spark"></div>
+        </div>
+
+        <div class="kpi-card kpi-red">
+          <div class="kpi-icon"><i class="ph ph-first-aid-kit"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Incapacidades</div>
+            <div class="kpi-value" id="kpiIncapacidades">0</div>
+            <div class="kpi-trend"><i class="ph ph-pulse"></i><span>Activas hoy</span></div>
+          </div>
+          <div class="kpi-spark"></div>
+        </div>
+
+        <div class="kpi-card kpi-yellow">
+          <div class="kpi-icon"><i class="ph ph-clock-counter-clockwise"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Permisos</div>
+            <div class="kpi-value" id="kpiPermisos">0</div>
+            <div class="kpi-trend"><i class="ph ph-calendar-check"></i><span>Vigentes</span></div>
+          </div>
+          <div class="kpi-spark"></div>
+        </div>
+
+        <div class="kpi-card kpi-blue">
+          <div class="kpi-icon"><i class="ph ph-calendar-check"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Próximos regresos</div>
+            <div class="kpi-value" id="kpiRegresos">0</div>
+            <div class="kpi-trend"><i class="ph ph-arrow-right"></i><span>Próximos 7 días</span></div>
+          </div>
+          <div class="kpi-spark"></div>
+        </div>
+
+        <div class="kpi-card kpi-purple">
+          <div class="kpi-icon"><i class="ph ph-warning"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Alertas críticas</div>
+            <div class="kpi-value" id="kpiAlertas">0</div>
+            <div class="kpi-trend"><i class="ph ph-bell"></i><span>Requieren atención</span></div>
+          </div>
+          <div class="kpi-spark"></div>
+        </div>
+
+        <div class="kpi-card kpi-neutral">
+          <div class="kpi-icon"><i class="ph ph-storefront"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Tienda sin cobertura</div>
+            <div class="kpi-value kpi-value-text" id="kpiTienda">—</div>
+            <div class="kpi-trend"><i class="ph ph-users-three"></i><span id="kpiTiendaSub">Sin datos</span></div>
+          </div>
+          <div class="kpi-spark"></div>
+        </div>
+      </section>
+
+      <!-- ============= VIEW: CALENDARIO ============= -->
+      <section class="view view-calendar" id="viewCalendar">
+        <div class="panel">
+          <div class="panel-header">
+            <div class="calendar-controls">
+              <button class="icon-btn" id="prevMonth" aria-label="Mes anterior">
+                <i class="ph ph-caret-left"></i>
+              </button>
+              <button class="btn btn-ghost" id="todayBtn">
+                <i class="ph ph-calendar"></i>
+                <span>Hoy</span>
+              </button>
+              <button class="icon-btn" id="nextMonth" aria-label="Mes siguiente">
+                <i class="ph ph-caret-right"></i>
+              </button>
+              <h2 class="calendar-title" id="calendarTitle">Mes</h2>
+            </div>
+
+            <div class="calendar-legend">
+              <span class="legend-item"><span class="dot dot-vacaciones"></span>Vacaciones</span>
+              <span class="legend-item"><span class="dot dot-permisos"></span>Permisos</span>
+              <span class="legend-item"><span class="dot dot-incapacidades"></span>Incapacidades</span>
+              <span class="legend-item"><span class="dot dot-licencias"></span>Licencias</span>
+              <span class="legend-item"><span class="dot dot-ausencias"></span>Ausencias</span>
+            </div>
+          </div>
+
+          <!-- Filtros rápidos del calendario -->
+          <div class="filter-bar">
+            <select id="filterTienda" class="filter-select">
+              <option value="">Todas las tiendas</option>
+            </select>
+            <select id="filterTipo" class="filter-select">
+              <option value="">Todos los tipos</option>
+              <option value="vacaciones">Vacaciones</option>
+              <option value="permisos">Permisos</option>
+              <option value="incapacidades">Incapacidades</option>
+              <option value="licencias">Licencias</option>
+              <option value="ausencias">Ausencias</option>
+            </select>
+            <select id="filterEstado" class="filter-select">
+              <option value="">Todos los estados</option>
+              <option value="verde">🟢 Normal</option>
+              <option value="amarillo">🟡 Atención</option>
+              <option value="rojo">🔴 Crítico</option>
+            </select>
+            <select id="filterCargo" class="filter-select">
+              <option value="">Todos los cargos</option>
+              <option value="Administrador de Tienda" selected>Administrador de Tienda</option>
+            </select>
+          </div>
+
+          <!-- Días de la semana -->
+          <div class="weekdays">
+            <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
+          </div>
+
+          <!-- Grid del calendario -->
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+
+        <!-- Panel lateral: ocupación por tienda -->
+        <aside class="side-panel">
+          <div class="panel">
+            <div class="panel-header-sm">
+              <h3>Ocupación por tienda</h3>
+              <span class="panel-sub">% admin ausente hoy</span>
+            </div>
+            <div class="store-occupancy" id="storeOccupancy"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header-sm">
+              <h3>Alertas inteligentes</h3>
+              <span class="panel-sub">Cruces y eventos críticos</span>
+            </div>
+            <div class="alerts-list" id="alertsList"></div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ============= VIEW: DASHBOARD RESUMEN ============= -->
+      <section class="view view-dashboard" id="viewDashboard" hidden>
+        <div class="grid-2">
+          <div class="panel">
+            <div class="panel-header-sm">
+              <h3>Distribución por tipo de novedad</h3>
+              <span class="panel-sub">Registros activos hoy</span>
+            </div>
+            <div class="distribution-chart" id="distributionChart"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-header-sm">
+              <h3>Próximos regresos</h3>
+              <span class="panel-sub">Siguientes 14 días</span>
+            </div>
+            <div class="upcoming-returns" id="upcomingReturns"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header-sm">
+            <h3>Resumen por tienda</h3>
+            <span class="panel-sub">Administrador ausente por sucursal</span>
+          </div>
+          <div class="store-grid" id="storeSummaryGrid"></div>
+        </div>
+      </section>
+
+      <!-- ============= VIEW: MÓDULO (tabla) ============= -->
+      <section class="view view-module" id="viewModule" hidden>
+        <div class="panel">
+          <div class="panel-header">
+            <h2 id="moduleTitle">Módulo</h2>
+            <div class="filter-bar">
+              <select id="modFilterTienda" class="filter-select">
+                <option value="">Todas las tiendas</option>
+              </select>
+              <select id="modFilterEstado" class="filter-select">
+                <option value="">Todos los estados</option>
+                <option value="verde">🟢 Normal</option>
+                <option value="amarillo">🟡 Atención</option>
+                <option value="rojo">🔴 Crítico</option>
+              </select>
+              <select id="modFilterMes" class="filter-select">
+                <option value="">Todos los meses</option>
+              </select>
+              <select id="modFilterAnio" class="filter-select">
+                <option value="">Todos los años</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Estado</th>
+                  <th>Empleado</th>
+                  <th>Cargo</th>
+                  <th>Tienda</th>
+                  <th>Tipo</th>
+                  <th>Salida</th>
+                  <th>Regreso</th>
+                  <th>Días</th>
+                  <th>Observaciones</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="moduleTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============= VIEW: ESTADÍSTICAS ============= -->
+      <section class="view view-stats" id="viewStats" hidden>
+        <div class="grid-3">
+          <div class="stat-card stat-green">
+            <div class="stat-icon"><i class="ph ph-check-circle"></i></div>
+            <div class="stat-value" id="statVerde">0</div>
+            <div class="stat-label">Estado Verde 🟢</div>
+            <div class="stat-desc">Procesos normales</div>
+          </div>
+          <div class="stat-card stat-yellow">
+            <div class="stat-icon"><i class="ph ph-warning-circle"></i></div>
+            <div class="stat-value" id="statAmarillo">0</div>
+            <div class="stat-label">Estado Amarillo 🟡</div>
+            <div class="stat-desc">Requieren seguimiento</div>
+          </div>
+          <div class="stat-card stat-red">
+            <div class="stat-icon"><i class="ph ph-x-circle"></i></div>
+            <div class="stat-value" id="statRojo">0</div>
+            <div class="stat-label">Estado Rojo 🔴</div>
+            <div class="stat-desc">Atención inmediata</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header-sm">
+            <h3>Ranking de tiendas por ausencias</h3>
+            <span class="panel-sub">Total histórico de novedades</span>
+          </div>
+          <div class="ranking" id="ranking"></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="panel">
+            <div class="panel-header-sm">
+              <h3>Novedades por mes</h3>
+              <span class="panel-sub">Año actual</span>
+            </div>
+            <div class="month-chart" id="monthChart"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-header-sm">
+              <h3>Top cargos con más novedades</h3>
+              <span class="panel-sub">Acumulado</span>
+            </div>
+            <div class="top-roles" id="topRoles"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============= VIEW: TIENDAS ============= -->
+      <section class="view view-tiendas" id="viewTiendas" hidden>
+        <div class="panel">
+          <div class="panel-header">
+            <h2>Gestión de tiendas · Administradores</h2>
+            <button class="btn btn-primary" id="btnAddStore">
+              <i class="ph ph-plus"></i><span>Agregar tienda</span>
+            </button>
+          </div>
+          <div class="store-cards" id="storeCards"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ============================ MODAL: REGISTRO ============================ -->
+  <div class="modal-backdrop" id="modalRecord" hidden>
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">Nuevo registro</h2>
+        <button class="icon-btn" id="modalClose" aria-label="Cerrar">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <form class="modal-body" id="recordForm">
+        <input type="hidden" id="recordId" />
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Nombre del empleado *</label>
+            <input type="text" id="fEmpleado" required placeholder="Ej. Carlos Martínez López" />
+          </div>
+          <div class="form-group">
+            <label>Cargo *</label>
+            <input type="text" id="fCargo" required value="Administrador de Tienda" readonly style="background:var(--bg-subtle);color:var(--text-secondary);cursor:not-allowed" list="cargosList" />
+            <datalist id="cargosList"></datalist>
+          </div>
+          <div class="form-group">
+            <label>Tienda *</label>
+            <select id="fTienda" required></select>
+          </div>
+          <div class="form-group">
+            <label>Tipo de novedad *</label>
+            <select id="fTipo" required>
+              <option value="vacaciones">Vacaciones</option>
+              <option value="permisos">Permisos</option>
+              <option value="incapacidades">Incapacidades</option>
+              <option value="licencias">Licencias</option>
+              <option value="ausencias">Ausencias</option>
+              <option value="otros">Otras novedades</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Fecha salida *</label>
+            <input type="date" id="fSalida" required />
+          </div>
+          <div class="form-group">
+            <label>Fecha regreso *</label>
+            <input type="date" id="fRegreso" required />
+          </div>
+          <div class="form-group form-group-full">
+            <label>Observaciones</label>
+            <textarea id="fObservaciones" rows="3" placeholder="Detalles adicionales..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" id="btnCancel">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="btnDelete" hidden>
+            <i class="ph ph-trash"></i><span>Eliminar</span>
+          </button>
+          <button type="submit" class="btn btn-primary">
+            <i class="ph ph-floppy-disk"></i><span>Guardar</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================ MODAL: DETALLES DEL DÍA ============================ -->
+  <div class="modal-backdrop" id="modalDay" hidden>
+    <div class="modal modal-lg">
+      <div class="modal-header">
+        <h2 id="modalDayTitle">Día</h2>
+        <button class="icon-btn" id="modalDayClose" aria-label="Cerrar">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="modalDayBody"></div>
+    </div>
+  </div>
+
+  <!-- ============================ MODAL: TIENDA ============================ -->
+  <div class="modal-backdrop" id="modalStore" hidden>
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalStoreTitle">Nueva tienda</h2>
+        <button class="icon-btn" id="modalStoreClose" aria-label="Cerrar">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <form class="modal-body" id="storeForm">
+        <input type="hidden" id="storeId" />
+        <div class="form-grid">
+          <div class="form-group form-group-full">
+            <label>Nombre de la tienda *</label>
+            <input type="text" id="sNombre" required placeholder="Ej. Jamar Centro Mayor" />
+          </div>
+          <div class="form-group">
+            <label>Ciudad</label>
+            <input type="text" id="sCiudad" placeholder="Ej. Bogotá" />
+          </div>
+          <div class="form-group">
+            <label>Administradores asignados</label>
+            <input type="number" id="sPersonal" min="1" value="10" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" id="storeCancel">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="storeDelete" hidden>
+            <i class="ph ph-trash"></i><span>Eliminar</span>
+          </button>
+          <button type="submit" class="btn btn-primary">
+            <i class="ph ph-floppy-disk"></i><span>Guardar</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================ TOASTS ============================ -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ============================ INPUT IMPORT (oculto) ============================ -->
+  <input type="file" id="importFile" accept=".json" hidden />
+
+  <script>
+/* ============================================================
+   JAMAR · CONTROL DE PERSONAL
+   Lógica principal de la aplicación
+   ------------------------------------------------------------
+   Arquitectura:
+   - Sin backend: persistencia en localStorage (clave 'jamar_db')
+   - Export/Import JSON para respaldos manuales / migraciones
+   - Estructura modular dentro de un IIFE para evitar contaminación global
+   - Sistema de semáforo automático según reglas de negocio
+   ============================================================ */
+
+(() => {
+  'use strict';
+
+  /* ============================================================
+     1. CONFIGURACIÓN INICIAL · 21 TIENDAS PRE-CARGADAS
+     ============================================================ */
+  const DEFAULT_STORES = [
+    { id: 's01', nombre: 'Jamar Cra 30',                ciudad: 'Bogotá',       personal: 1 },
+    { id: 's02', nombre: 'Jamar El Edén',               ciudad: 'Bogotá',       personal: 1 },
+    { id: 's03', nombre: 'Jamar Norte Bogotá Principal',ciudad: 'Bogotá',       personal: 1 },
+    { id: 's04', nombre: 'Jamar Norte',                 ciudad: 'Bogotá',       personal: 1 },
+    { id: 's05', nombre: 'Molinos CC Medellín',         ciudad: 'Medellín',     personal: 1 },
+    { id: 's06', nombre: 'Mayorca CC Medellín',         ciudad: 'Medellín',     personal: 1 },
+    { id: 's07', nombre: 'Jamar Sincelejo',             ciudad: 'Sincelejo',    personal: 1 },
+    { id: 's08', nombre: 'Montería',                    ciudad: 'Montería',     personal: 1 },
+    { id: 's09', nombre: 'Jamar Metropolitano',         ciudad: 'Barranquilla', personal: 1 },
+    { id: 's10', nombre: 'Santa Marta',                 ciudad: 'Santa Marta',  personal: 1 },
+    { id: 's11', nombre: 'Jamar San Felipe',            ciudad: 'Bogotá',       personal: 1 },
+    { id: 's12', nombre: 'Jamar Plaza Américas',        ciudad: 'Bogotá',       personal: 1 },
+    { id: 's13', nombre: 'HiperJamar',                  ciudad: 'Barranquilla', personal: 1 },
+    { id: 's14', nombre: 'Cuatro Vientos',              ciudad: 'Barranquilla', personal: 1 },
+    { id: 's15', nombre: 'Jamar Fabricato',             ciudad: 'Medellín',     personal: 1 },
+    { id: 's16', nombre: 'Jamar CC Florida',            ciudad: 'Cali',         personal: 1 },
+    { id: 's17', nombre: 'Jamar Riohacha',              ciudad: 'Riohacha',     personal: 1 },
+    { id: 's18', nombre: 'Jamar La Plazuela',           ciudad: 'Medellín',     personal: 1 },
+    { id: 's19', nombre: 'Bucaramanga',                 ciudad: 'Bucaramanga',  personal: 1 },
+    { id: 's20', nombre: 'Valledupar Loperena',         ciudad: 'Valledupar',   personal: 1 }
+  ];
+
+  const CARGOS_FRECUENTES = [
+    'Administrador de Tienda'
+  ];
+
+  /* Tipos de novedad y configuración visual */
+  const TIPOS = {
+    vacaciones:    { label: 'Vacaciones',    color: '#12B76A', icon: 'ph-airplane-tilt' },
+    permisos:      { label: 'Permisos',      color: '#F79009', icon: 'ph-clock-counter-clockwise' },
+    incapacidades: { label: 'Incapacidades', color: '#F04438', icon: 'ph-first-aid-kit' },
+    licencias:     { label: 'Licencias',     color: '#7A5AF8', icon: 'ph-file-text' },
+    ausencias:     { label: 'Ausencias',     color: '#2E90FA', icon: 'ph-user-minus' },
+    otros:         { label: 'Otras',         color: '#475467', icon: 'ph-dots-three' }
+  };
+
+  const MESES = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ];
+
+  /* ============================================================
+     2. CAPA DE PERSISTENCIA · localStorage
+     ============================================================ */
+  const DB_KEY = 'jamar_admin_db';
+  const DB_VERSION = 1;
+
+  const db = {
+    /** Carga la base de datos del localStorage o crea una nueva */
+    load() {
+      try {
+        const raw = localStorage.getItem(DB_KEY);
+        if (!raw) return this._seed();
+        const data = JSON.parse(raw);
+        // Verificar estructura mínima
+        if (!data.stores || !data.records) return this._seed();
+        return data;
+      } catch (e) {
+        console.error('Error cargando DB:', e);
+        return this._seed();
+      }
+    },
+
+    /** Guarda la base de datos completa */
+    save(data) {
+      try {
+        data.updated = new Date().toISOString();
+        localStorage.setItem(DB_KEY, JSON.stringify(data));
+        return true;
+      } catch (e) {
+        console.error('Error guardando DB:', e);
+        toast('Error al guardar. ¿Cuota de almacenamiento alcanzada?', 'error');
+        return false;
+      }
+    },
+
+    /** Estado inicial con las 21 tiendas */
+    _seed() {
+      const seed = {
+        version: DB_VERSION,
+        stores: [...DEFAULT_STORES],
+        records: [],
+        cargos: [...CARGOS_FRECUENTES],
+        created: new Date().toISOString(),
+        updated: new Date().toISOString()
+      };
+      try { localStorage.setItem(DB_KEY, JSON.stringify(seed)); } catch (e) {}
+      return seed;
+    },
+
+    /** Resetea la base */
+    reset() {
+      localStorage.removeItem(DB_KEY);
+      return this._seed();
+    }
+  };
+
+  /** Estado global de la app */
+  const state = {
+    data: db.load(),
+    view: 'calendar',
+    currentDate: new Date(),
+    currentModule: null,
+    filters: {
+      tienda: '',
+      tipo: '',
+      estado: '',
+      cargo: 'Administrador de Tienda',
+      search: '',
+      mes: '',
+      anio: ''
+    }
+  };
+
+  /* ============================================================
+     3. UTILIDADES
+     ============================================================ */
+
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+  const uid = () => 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+
+  /** Convierte un string ISO o Date a una fecha LOCAL al inicio del día (sin huso) */
+  const toDate = (val) => {
+    if (val instanceof Date) return new Date(val.getFullYear(), val.getMonth(), val.getDate());
+    if (typeof val === 'string') {
+      // Formato YYYY-MM-DD => construye localmente para evitar desfase
+      const [y, m, d] = val.split('-').map(Number);
+      return new Date(y, m - 1, d);
+    }
+    return new Date();
+  };
+
+  /** Formatea Date a 'YYYY-MM-DD' (local) */
+  const fmtISO = (date) => {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  };
+
+  /** Formato humano DD/MM/YYYY */
+  const fmtHuman = (val) => {
+    const d = toDate(val);
+    return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+  };
+
+  /** Días de diferencia entre dos fechas (inclusivo positivo) */
+  const daysBetween = (a, b) => Math.round((toDate(b) - toDate(a)) / 86400000);
+
+  /** Inicial(es) del nombre para avatar */
+  const initials = (name) => {
+    const parts = (name || '?').trim().split(/\s+/);
+    return ((parts[0]?.[0] || '') + (parts[1]?.[0] || '')).toUpperCase() || '?';
+  };
+
+  /** Verifica si una fecha cae dentro del rango del registro */
+  const dateInRecord = (date, record) => {
+    const d = toDate(date).getTime();
+    return d >= toDate(record.salida).getTime() && d <= toDate(record.regreso).getTime();
+  };
+
+  /** Capitaliza */
+  const cap = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
+
+  /* ============================================================
+     4. SISTEMA DE SEMÁFORO (Reglas de negocio)
+     ------------------------------------------------------------
+     ROJO    🔴 - Incapacidades activas, ausencias críticas,
+                 cruces (>25% personal ausente en tienda),
+                 registros vencidos sin actualizar.
+     AMARILLO 🟡 - Eventos próximos (1-3 días), permisos vigentes,
+                 fechas cercanas, vacaciones por iniciar pronto.
+     VERDE   🟢 - Procesos normales, vacaciones programadas
+                 correctamente con anticipación.
+     ============================================================ */
+  function calcularEstado(record, allRecords = state.data.records) {
+    const today = toDate(new Date());
+    const salida = toDate(record.salida);
+    const regreso = toDate(record.regreso);
+    const yaInicio = today >= salida;
+    const yaTermino = today > regreso;
+    const diasParaInicio = daysBetween(today, salida);
+    const diasParaRegreso = daysBetween(today, regreso);
+
+    // ROJO: Incapacidades activas
+    if (record.tipo === 'incapacidades' && yaInicio && !yaTermino) return 'rojo';
+
+    // ROJO: Ausencias activas (no programadas)
+    if (record.tipo === 'ausencias' && yaInicio && !yaTermino) return 'rojo';
+
+    // ROJO: Registros vencidos sin "actualizar" (terminó hace más de 3 días)
+    if (yaTermino && Math.abs(daysBetween(today, regreso)) > 3) return 'rojo';
+
+    // ROJO: Cruce crítico de personal por tienda en la fecha del registro
+    if (yaInicio && !yaTermino) {
+      const tienda = state.data.stores.find(s => s.id === record.tienda);
+      if (tienda) {
+        const ausentesHoy = allRecords.filter(r =>
+          r.tienda === record.tienda && dateInRecord(today, r)
+        ).length;
+        if (tienda.personal > 0 && (ausentesHoy / tienda.personal) > 0.25) {
+          return 'rojo';
+        }
+      }
+    }
+
+    // AMARILLO: Próximo a iniciar (1-3 días)
+    if (!yaInicio && diasParaInicio >= 0 && diasParaInicio <= 3) return 'amarillo';
+
+    // AMARILLO: Próximo a regresar (1-2 días)
+    if (yaInicio && !yaTermino && diasParaRegreso >= 0 && diasParaRegreso <= 2) return 'amarillo';
+
+    // AMARILLO: Permisos pendientes en curso
+    if (record.tipo === 'permisos' && yaInicio && !yaTermino) return 'amarillo';
+
+    // VERDE: por defecto (programado normal)
+    return 'verde';
+  }
+
+  /* ============================================================
+     5. RENDERIZADO PRINCIPAL
+     ============================================================ */
+  function render() {
+    renderNavCounts();
+    renderKPIs();
+    renderStorageInfo();
+    populateFilters();
+
+    // Vistas
+    if (state.view === 'calendar') {
+      show('#viewCalendar');
+      $('#viewTitle').textContent = 'Calendario';
+      $('#viewSubtitle').textContent = 'Vista mensual de administradores';
+      renderCalendar();
+      renderStoreOccupancy();
+      renderAlerts();
+    } else if (state.view === 'dashboard') {
+      show('#viewDashboard');
+      $('#viewTitle').textContent = 'Resumen general';
+      $('#viewSubtitle').textContent = 'Visión panorámica de administradores';
+      renderDistribution();
+      renderUpcomingReturns();
+      renderStoreSummaryGrid();
+    } else if (state.view === 'module') {
+      show('#viewModule');
+      const cfg = TIPOS[state.currentModule];
+      $('#viewTitle').textContent = cfg?.label || 'Módulo';
+      $('#viewSubtitle').textContent = `Gestión de ${cfg?.label?.toLowerCase() || 'registros'}`;
+      $('#moduleTitle').textContent = `Listado de ${cfg?.label?.toLowerCase() || 'registros'}`;
+      renderModuleTable();
+    } else if (state.view === 'stats') {
+      show('#viewStats');
+      $('#viewTitle').textContent = 'Estadísticas';
+      $('#viewSubtitle').textContent = 'Análisis y métricas de administradores';
+      renderStats();
+    } else if (state.view === 'tiendas') {
+      show('#viewTiendas');
+      $('#viewTitle').textContent = 'Tiendas';
+      $('#viewSubtitle').textContent = `${state.data.stores.length} sucursales · 1 admin c/u`;
+      renderStoreCards();
+    }
+  }
+
+  /** Muestra una vista y oculta las demás */
+  function show(selector) {
+    $$('.view').forEach(v => v.hidden = true);
+    $(selector).hidden = false;
+    // Marcar item del menú activo
+    $$('.nav-item').forEach(n => n.classList.remove('active'));
+    if (state.view === 'module') {
+      const btn = $$('.nav-item').find(n => n.dataset.module === state.currentModule);
+      if (btn) btn.classList.add('active');
+    } else {
+      const btn = $$('.nav-item').find(n => n.dataset.view === state.view);
+      if (btn) btn.classList.add('active');
+    }
+  }
+
+  /* ----- KPIs (tarjetas superiores) ----- */
+  function renderKPIs() {
+    const today = toDate(new Date());
+    const records = state.data.records;
+    const active = records.filter(r => dateInRecord(today, r));
+
+    const byType = (t) => active.filter(r => r.tipo === t).length;
+
+    $('#kpiVacaciones').textContent = byType('vacaciones');
+    $('#kpiIncapacidades').textContent = byType('incapacidades');
+    $('#kpiPermisos').textContent = byType('permisos');
+
+    // Próximos regresos (siguientes 7 días)
+    const proximosRegresos = records.filter(r => {
+      const d = daysBetween(today, r.regreso);
+      return d >= 0 && d <= 7 && dateInRecord(today, r);
+    }).length;
+    $('#kpiRegresos').textContent = proximosRegresos;
+
+    // Alertas críticas (registros con estado rojo)
+    const criticos = records.filter(r => calcularEstado(r) === 'rojo').length;
+    $('#kpiAlertas').textContent = criticos;
+
+    // Tienda sin cobertura hoy
+    const porTienda = {};
+    active.forEach(r => {
+      porTienda[r.tienda] = (porTienda[r.tienda] || 0) + 1;
+    });
+    let topId = null, topCount = 0;
+    Object.entries(porTienda).forEach(([id, c]) => {
+      if (c > topCount) { topId = id; topCount = c; }
+    });
+    if (topId) {
+      const t = state.data.stores.find(s => s.id === topId);
+      $('#kpiTienda').textContent = t?.nombre.replace('Jamar ', '') || '—';
+      $('#kpiTiendaSub').textContent = `${topCount} persona${topCount !== 1 ? 's' : ''} ausente${topCount !== 1 ? 's' : ''}`;
+    } else {
+      $('#kpiTienda').textContent = 'Sin ausencias';
+      $('#kpiTiendaSub').textContent = 'Operación normal';
+    }
+  }
+
+  /* ----- Contadores del menú lateral ----- */
+  function renderNavCounts() {
+    const today = toDate(new Date());
+    const counts = { vacaciones: 0, permisos: 0, incapacidades: 0, licencias: 0, ausencias: 0 };
+    state.data.records.forEach(r => {
+      if (dateInRecord(today, r) && counts[r.tipo] !== undefined) counts[r.tipo]++;
+    });
+    $('#countVacaciones').textContent = counts.vacaciones;
+    $('#countPermisos').textContent = counts.permisos;
+    $('#countIncapacidades').textContent = counts.incapacidades;
+    $('#countLicencias').textContent = counts.licencias;
+    $('#countAusencias').textContent = counts.ausencias;
+  }
+
+  /* ----- Info de almacenamiento ----- */
+  function renderStorageInfo() {
+    const n = state.data.records.length;
+    $('#storageText').textContent = `${n} registro${n !== 1 ? 's' : ''} · ${state.data.stores.length} tiendas`;
+    // Estimar uso de localStorage
+    const used = JSON.stringify(state.data).length;
+    const max = 5 * 1024 * 1024; // ~5MB típico
+    const pct = Math.min(100, (used / max) * 100);
+    $('#storageFill').style.width = Math.max(3, pct) + '%';
+  }
+
+  /* ----- Filtros (poblar selects con datos vivos) ----- */
+  function populateFilters() {
+    const tiendaOptions = '<option value="">Todas las tiendas</option>' +
+      state.data.stores.map(s => `<option value="${s.id}">${s.nombre}</option>`).join('');
+    ['#filterTienda', '#modFilterTienda', '#fTienda'].forEach(sel => {
+      const el = $(sel);
+      if (!el) return;
+      const prev = el.value;
+      if (sel === '#fTienda') {
+        el.innerHTML = state.data.stores.map(s => `<option value="${s.id}">${s.nombre}</option>`).join('');
+      } else {
+        el.innerHTML = tiendaOptions;
+      }
+      el.value = prev || '';
+    });
+
+    // Cargos únicos
+    const cargosSet = new Set(state.data.cargos || []);
+    state.data.records.forEach(r => r.cargo && cargosSet.add(r.cargo));
+    const cargos = [...cargosSet].sort();
+    const filterCargo = $('#filterCargo');
+    if (filterCargo) {
+      const prev = filterCargo.value;
+      filterCargo.innerHTML = '<option value="">Todos los cargos</option>' +
+        cargos.map(c => `<option value="${c}">${c}</option>`).join('');
+      filterCargo.value = prev;
+    }
+    const datalist = $('#cargosList');
+    if (datalist) datalist.innerHTML = cargos.map(c => `<option value="${c}">`).join('');
+
+    // Meses y años
+    const filterMes = $('#modFilterMes');
+    if (filterMes && filterMes.children.length <= 1) {
+      filterMes.innerHTML = '<option value="">Todos los meses</option>' +
+        MESES.map((m, i) => `<option value="${i}">${m}</option>`).join('');
+    }
+    const filterAnio = $('#modFilterAnio');
+    if (filterAnio) {
+      const anios = new Set([new Date().getFullYear()]);
+      state.data.records.forEach(r => anios.add(toDate(r.salida).getFullYear()));
+      const list = [...anios].sort((a,b) => b - a);
+      const prev = filterAnio.value;
+      filterAnio.innerHTML = '<option value="">Todos los años</option>' +
+        list.map(a => `<option value="${a}">${a}</option>`).join('');
+      filterAnio.value = prev;
+    }
+  }
+
+  /* ============================================================
+     6. CALENDARIO MENSUAL CON NAVEGACIÓN INFINITA
+     ============================================================ */
+  function renderCalendar() {
+    const y = state.currentDate.getFullYear();
+    const m = state.currentDate.getMonth();
+    $('#calendarTitle').textContent = `${MESES[m]} ${y}`;
+
+    // Primer y último día del mes
+    const firstOfMonth = new Date(y, m, 1);
+    const lastOfMonth = new Date(y, m + 1, 0);
+
+    // Día de la semana del primer día (lunes=0, domingo=6)
+    let startWeekday = (firstOfMonth.getDay() + 6) % 7;
+    // Día inicial de la grilla (lunes anterior)
+    const gridStart = new Date(y, m, 1 - startWeekday);
+
+    const grid = $('#calendarGrid');
+    grid.innerHTML = '';
+
+    // 6 semanas × 7 días = 42 celdas
+    const today = toDate(new Date());
+
+    for (let i = 0; i < 42; i++) {
+      const day = new Date(gridStart);
+      day.setDate(gridStart.getDate() + i);
+      const dayDiv = document.createElement('div');
+      dayDiv.className = 'day';
+      if (day.getMonth() !== m) dayDiv.classList.add('out-of-month');
+      if ([0, 6].includes(day.getDay())) dayDiv.classList.add('weekend');
+      if (day.getTime() === today.getTime()) dayDiv.classList.add('today');
+
+      // Eventos del día (aplica filtros del calendario)
+      const events = state.data.records.filter(r => {
+        if (!dateInRecord(day, r)) return false;
+        if (state.filters.tienda && r.tienda !== state.filters.tienda) return false;
+        if (state.filters.tipo && r.tipo !== state.filters.tipo) return false;
+        if (state.filters.cargo && r.cargo !== state.filters.cargo) return false;
+        if (state.filters.estado && calcularEstado(r) !== state.filters.estado) return false;
+        if (state.filters.search) {
+          const s = state.filters.search.toLowerCase();
+          const tienda = state.data.stores.find(t => t.id === r.tienda);
+          if (!(
+            r.empleado.toLowerCase().includes(s) ||
+            (r.cargo || '').toLowerCase().includes(s) ||
+            (tienda?.nombre || '').toLowerCase().includes(s)
+          )) return false;
+        }
+        return true;
+      });
+
+      // Calcular peor estado del día para el badge
+      let peorEstado = null;
+      events.forEach(e => {
+        const est = calcularEstado(e);
+        if (est === 'rojo') peorEstado = 'rojo';
+        else if (est === 'amarillo' && peorEstado !== 'rojo') peorEstado = 'amarillo';
+        else if (!peorEstado) peorEstado = 'verde';
+      });
+
+      const header = document.createElement('div');
+      header.className = 'day-header';
+      header.innerHTML = `
+        <span class="day-num">${day.getDate()}</span>
+        ${events.length > 0 ? `<span class="day-badge ${peorEstado}">${events.length}</span>` : ''}
+      `;
+      dayDiv.appendChild(header);
+
+      // Mostrar hasta 3 eventos, resto como "+N más"
+      events.slice(0, 3).forEach(ev => {
+        const evDiv = document.createElement('div');
+        evDiv.className = `event ${ev.tipo}`;
+        evDiv.textContent = ev.empleado.split(' ')[0] + ' ' + (ev.empleado.split(' ')[1] || '');
+        evDiv.title = `${ev.empleado} · ${TIPOS[ev.tipo]?.label}`;
+        evDiv.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openRecordModal(ev);
+        });
+        dayDiv.appendChild(evDiv);
+      });
+      if (events.length > 3) {
+        const more = document.createElement('div');
+        more.className = 'event-more';
+        more.textContent = `+ ${events.length - 3} más`;
+        dayDiv.appendChild(more);
+      }
+
+      dayDiv.addEventListener('click', () => openDayModal(day, events));
+      grid.appendChild(dayDiv);
+    }
+  }
+
+  /* ============================================================
+     7. PANEL LATERAL: OCUPACIÓN POR TIENDA + ALERTAS
+     ============================================================ */
+  function renderStoreOccupancy() {
+    const today = toDate(new Date());
+    const cont = $('#storeOccupancy');
+
+    const rows = state.data.stores.map(t => {
+      const ausentes = state.data.records.filter(r =>
+        r.tienda === t.id && dateInRecord(today, r)
+      ).length;
+      const pct = t.personal > 0 ? (ausentes / t.personal) * 100 : 0;
+      return { tienda: t, ausentes, pct };
+    }).sort((a, b) => b.pct - a.pct);
+
+    if (rows.every(r => r.ausentes === 0)) {
+      cont.innerHTML = `<div class="empty"><i class="ph ph-check-circle"></i>Sin ausencias hoy en ninguna tienda</div>`;
+      return;
+    }
+
+    cont.innerHTML = rows.filter(r => r.ausentes > 0).slice(0, 10).map(({ tienda, ausentes, pct }) => {
+      const lvl = pct > 25 ? 'high' : pct > 10 ? 'med' : 'low';
+      return `
+        <div class="store-row">
+          <div class="store-row-head">
+            <span class="store-name">${tienda.nombre}</span>
+            <span class="store-percent">${ausentes}/${tienda.personal} · ${pct.toFixed(0)}%</span>
+          </div>
+          <div class="store-bar">
+            <div class="store-fill ${lvl}" style="width:${Math.min(100, pct)}%"></div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function renderAlerts() {
+    const cont = $('#alertsList');
+    const alertas = generarAlertas();
+    if (alertas.length === 0) {
+      cont.innerHTML = `<div class="empty"><i class="ph ph-shield-check"></i>Sin alertas en este momento</div>`;
+      return;
+    }
+    cont.innerHTML = alertas.map(a => `
+      <div class="alert-item ${a.nivel}">
+        <div class="alert-icon"><i class="ph ${a.icon}"></i></div>
+        <div class="alert-text">
+          <div class="alert-title">${a.titulo}</div>
+          <div class="alert-desc">${a.desc}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  /** Genera lista de alertas inteligentes */
+  function generarAlertas() {
+    const today = toDate(new Date());
+    const alertas = [];
+
+    // 1) Tiendas con >25% personal ausente
+    state.data.stores.forEach(t => {
+      const ausentes = state.data.records.filter(r =>
+        r.tienda === t.id && dateInRecord(today, r)
+      ).length;
+      const pct = t.personal > 0 ? (ausentes / t.personal) * 100 : 0;
+      if (pct > 25) {
+        alertas.push({
+          nivel: 'rojo',
+          icon: 'ph-warning-octagon',
+          titulo: `${t.nombre}: cruce crítico`,
+          desc: `${ausentes} de ${t.personal} personas ausentes (${pct.toFixed(0)}%). Revisar cobertura operativa.`
+        });
+      } else if (pct > 15) {
+        alertas.push({
+          nivel: 'amarillo',
+          icon: 'ph-warning',
+          titulo: `${t.nombre}: ocupación elevada`,
+          desc: `${ausentes} de ${t.personal} personas ausentes (${pct.toFixed(0)}%).`
+        });
+      }
+    });
+
+    // 2) Incapacidades activas
+    const incapac = state.data.records.filter(r =>
+      r.tipo === 'incapacidades' && dateInRecord(today, r)
+    );
+    if (incapac.length > 0) {
+      alertas.push({
+        nivel: 'rojo',
+        icon: 'ph-first-aid-kit',
+        titulo: `${incapac.length} incapacidad${incapac.length !== 1 ? 'es' : ''} activa${incapac.length !== 1 ? 's' : ''}`,
+        desc: `Personal con seguimiento médico requerido en este momento.`
+      });
+    }
+
+    // 3) Próximos regresos (siguientes 3 días)
+    const proximos = state.data.records.filter(r => {
+      const d = daysBetween(today, r.regreso);
+      return d >= 0 && d <= 3 && dateInRecord(today, r);
+    });
+    if (proximos.length > 0) {
+      alertas.push({
+        nivel: 'amarillo',
+        icon: 'ph-calendar-check',
+        titulo: `${proximos.length} regreso${proximos.length !== 1 ? 's' : ''} en los próximos 3 días`,
+        desc: 'Preparar reincorporación y reasignación de turnos.'
+      });
+    }
+
+    // 4) Registros vencidos
+    const vencidos = state.data.records.filter(r => {
+      const d = daysBetween(today, r.regreso);
+      return d < -3;
+    });
+    if (vencidos.length > 0) {
+      alertas.push({
+        nivel: 'rojo',
+        icon: 'ph-clock-clockwise',
+        titulo: `${vencidos.length} registro${vencidos.length !== 1 ? 's' : ''} vencido${vencidos.length !== 1 ? 's' : ''} sin actualizar`,
+        desc: 'Hay novedades cuya fecha de regreso ya pasó hace más de 3 días.'
+      });
+    }
+
+    // 5) Próximas vacaciones programadas (1-7 días)
+    const proxVac = state.data.records.filter(r => {
+      const d = daysBetween(today, r.salida);
+      return r.tipo === 'vacaciones' && d > 0 && d <= 7;
+    });
+    if (proxVac.length > 0) {
+      alertas.push({
+        nivel: 'verde',
+        icon: 'ph-airplane-takeoff',
+        titulo: `${proxVac.length} vacación${proxVac.length !== 1 ? 'es' : ''} próxima${proxVac.length !== 1 ? 's' : ''}`,
+        desc: 'Programadas para iniciar en la próxima semana.'
+      });
+    }
+
+    return alertas;
+  }
+
+  /* ============================================================
+     8. VISTA: RESUMEN GENERAL (DASHBOARD)
+     ============================================================ */
+  function renderDistribution() {
+    const today = toDate(new Date());
+    const active = state.data.records.filter(r => dateInRecord(today, r));
+    const total = active.length || 1;
+    const cont = $('#distributionChart');
+
+    if (active.length === 0) {
+      cont.innerHTML = `<div class="empty"><i class="ph ph-chart-pie-slice"></i>Sin novedades activas hoy</div>`;
+      return;
+    }
+
+    cont.innerHTML = Object.entries(TIPOS).map(([key, cfg]) => {
+      const count = active.filter(r => r.tipo === key).length;
+      const pct = (count / total) * 100;
+      return `
+        <div class="dist-row">
+          <div class="dist-head">
+            <span class="dist-label"><span class="dot dot-${key}"></span>${cfg.label}</span>
+            <span class="dist-value">${count} (${pct.toFixed(0)}%)</span>
+          </div>
+          <div class="dist-bar">
+            <div class="dist-fill" style="width:${pct}%; background:${cfg.color}"></div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function renderUpcomingReturns() {
+    const today = toDate(new Date());
+    const list = state.data.records
+      .filter(r => {
+        const d = daysBetween(today, r.regreso);
+        return d >= 0 && d <= 14 && dateInRecord(today, r);
+      })
+      .sort((a, b) => toDate(a.regreso) - toDate(b.regreso))
+      .slice(0, 12);
+
+    const cont = $('#upcomingReturns');
+    if (list.length === 0) {
+      cont.innerHTML = `<div class="empty"><i class="ph ph-calendar-x"></i>No hay regresos próximos</div>`;
+      return;
+    }
+
+    cont.innerHTML = list.map(r => {
+      const d = toDate(r.regreso);
+      const dias = daysBetween(today, d);
+      const tienda = state.data.stores.find(t => t.id === r.tienda);
+      const cd = dias === 0 ? 'Hoy' : dias === 1 ? 'Mañana' : `En ${dias} días`;
+      return `
+        <div class="return-row" data-id="${r.id}">
+          <div class="return-date">
+            <div class="return-day">${d.getDate()}</div>
+            <div class="return-mon">${MESES[d.getMonth()].slice(0,3)}</div>
+          </div>
+          <div class="return-info">
+            <div class="return-name">${r.empleado}</div>
+            <div class="return-meta">${r.cargo || '—'} · ${tienda?.nombre || '—'} · <span class="type-pill ${r.tipo}" style="font-size:10px;padding:1px 6px">${TIPOS[r.tipo]?.label}</span></div>
+          </div>
+          <div class="return-countdown">${cd}</div>
+        </div>
+      `;
+    }).join('');
+
+    // Click → editar
+    $$('#upcomingReturns .return-row').forEach(row => {
+      row.addEventListener('click', () => {
+        const r = state.data.records.find(x => x.id === row.dataset.id);
+        if (r) openRecordModal(r);
+      });
+    });
+  }
+
+  function renderStoreSummaryGrid() {
+    const today = toDate(new Date());
+    const cont = $('#storeSummaryGrid');
+
+    cont.innerHTML = state.data.stores.map(t => {
+      const ausentes = state.data.records.filter(r =>
+        r.tienda === t.id && dateInRecord(today, r)
+      );
+      const pct = t.personal > 0 ? (ausentes.length / t.personal) * 100 : 0;
+      const nivel = pct > 25 ? 'rojo' : pct > 10 ? 'amarillo' : 'verde';
+      const pillBg = nivel === 'rojo' ? 'var(--red-bg)' : nivel === 'amarillo' ? 'var(--yellow-bg)' : 'var(--green-bg)';
+      const pillCol = nivel === 'rojo' ? 'var(--red-dark)' : nivel === 'amarillo' ? 'var(--yellow-dark)' : 'var(--green-dark)';
+      return `
+        <div class="store-card">
+          <div class="store-card-head">
+            <div>
+              <div class="store-card-name">${t.nombre}</div>
+              <div class="store-card-city">${t.ciudad || ''}</div>
+            </div>
+            <span class="store-card-pill" style="background:${pillBg}; color:${pillCol}">${pct.toFixed(0)}%</span>
+          </div>
+          <div class="store-card-stats">
+            <div class="store-stat">
+              <span class="store-stat-num">${ausentes.length}</span>
+              <span class="store-stat-lbl">Ausentes</span>
+            </div>
+            <div class="store-stat">
+              <span class="store-stat-num">${t.personal}</span>
+              <span class="store-stat-lbl">Total</span>
+            </div>
+            <div class="store-stat">
+              <span class="store-stat-num">${t.personal - ausentes.length}</span>
+              <span class="store-stat-lbl">Activos</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  /* ============================================================
+     9. VISTA: TABLA DE MÓDULO
+     ============================================================ */
+  function renderModuleTable() {
+    const tbody = $('#moduleTableBody');
+    const moduleType = state.currentModule;
+
+    let records = state.data.records.filter(r => r.tipo === moduleType);
+
+    // Filtros del módulo
+    const fT = $('#modFilterTienda').value;
+    const fE = $('#modFilterEstado').value;
+    const fM = $('#modFilterMes').value;
+    const fA = $('#modFilterAnio').value;
+    const search = state.filters.search;
+
+    if (fT) records = records.filter(r => r.tienda === fT);
+    if (fE) records = records.filter(r => calcularEstado(r) === fE);
+    if (fM !== '') records = records.filter(r => toDate(r.salida).getMonth() === parseInt(fM));
+    if (fA) records = records.filter(r => toDate(r.salida).getFullYear() === parseInt(fA));
+    if (search) {
+      const s = search.toLowerCase();
+      records = records.filter(r => {
+        const t = state.data.stores.find(x => x.id === r.tienda);
+        return (
+          r.empleado.toLowerCase().includes(s) ||
+          (r.cargo || '').toLowerCase().includes(s) ||
+          (t?.nombre || '').toLowerCase().includes(s)
+        );
+      });
+    }
+
+    // Orden por fecha de salida descendente
+    records.sort((a, b) => toDate(b.salida) - toDate(a.salida));
+
+    if (records.length === 0) {
+      tbody.innerHTML = `
+        <tr><td colspan="10">
+          <div class="empty"><i class="ph ph-folder-open"></i>Sin registros para mostrar</div>
+        </td></tr>
+      `;
+      return;
+    }
+
+    tbody.innerHTML = records.map(r => {
+      const t = state.data.stores.find(x => x.id === r.tienda);
+      const est = calcularEstado(r);
+      const dias = daysBetween(r.salida, r.regreso) + 1;
+      const obsShort = (r.observaciones || '').length > 50
+        ? r.observaciones.slice(0, 50) + '…'
+        : r.observaciones || '—';
+      return `
+        <tr>
+          <td><span class="status-pill ${est}">${cap(est)}</span></td>
+          <td>
+            <div class="employee-cell">
+              <div class="avatar">${initials(r.empleado)}</div>
+              <div>
+                <div class="employee-name">${r.empleado}</div>
+              </div>
+            </div>
+          </td>
+          <td>${r.cargo || '—'}</td>
+          <td>${t?.nombre || '—'}</td>
+          <td><span class="type-pill ${r.tipo}">${TIPOS[r.tipo]?.label}</span></td>
+          <td>${fmtHuman(r.salida)}</td>
+          <td>${fmtHuman(r.regreso)}</td>
+          <td>${dias}</td>
+          <td title="${(r.observaciones || '').replace(/"/g,'&quot;')}">${obsShort}</td>
+          <td>
+            <div class="row-actions">
+              <button class="row-action" data-act="edit" data-id="${r.id}" title="Editar">
+                <i class="ph ph-pencil-simple"></i>
+              </button>
+              <button class="row-action danger" data-act="delete" data-id="${r.id}" title="Eliminar">
+                <i class="ph ph-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    // Wire actions
+    $$('#moduleTableBody [data-act]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const rec = state.data.records.find(r => r.id === btn.dataset.id);
+        if (!rec) return;
+        if (btn.dataset.act === 'edit') openRecordModal(rec);
+        if (btn.dataset.act === 'delete') {
+          if (confirm(`¿Eliminar el registro de ${rec.empleado}?`)) {
+            state.data.records = state.data.records.filter(r => r.id !== rec.id);
+            db.save(state.data);
+            render();
+            toast('Registro eliminado', 'success');
+          }
+        }
+      });
+    });
+  }
+
+  /* ============================================================
+     10. VISTA: ESTADÍSTICAS
+     ============================================================ */
+  function renderStats() {
+    // Conteo por estado
+    const all = state.data.records;
+    const counts = { verde: 0, amarillo: 0, rojo: 0 };
+    all.forEach(r => { counts[calcularEstado(r)]++; });
+    $('#statVerde').textContent = counts.verde;
+    $('#statAmarillo').textContent = counts.amarillo;
+    $('#statRojo').textContent = counts.rojo;
+
+    // Ranking tiendas
+    const porTienda = {};
+    all.forEach(r => { porTienda[r.tienda] = (porTienda[r.tienda] || 0) + 1; });
+    const ranking = Object.entries(porTienda)
+      .map(([id, n]) => ({ tienda: state.data.stores.find(s => s.id === id), n }))
+      .filter(x => x.tienda)
+      .sort((a, b) => b.n - a.n)
+      .slice(0, 10);
+
+    const rankingCont = $('#ranking');
+    if (ranking.length === 0) {
+      rankingCont.innerHTML = `<div class="empty"><i class="ph ph-chart-bar"></i>Sin datos suficientes</div>`;
+    } else {
+      rankingCont.innerHTML = ranking.map((r, i) => `
+        <div class="rank-row">
+          <div class="rank-pos">${i + 1}</div>
+          <div class="rank-info">
+            <div class="rank-name">${r.tienda.nombre}</div>
+            <div class="rank-meta">${r.tienda.ciudad || ''} · ${r.tienda.personal} personas en planta</div>
+          </div>
+          <div class="rank-num">${r.n}</div>
+        </div>
+      `).join('');
+    }
+
+    // Mes a mes (año actual)
+    const year = new Date().getFullYear();
+    const monthData = Array(12).fill(0);
+    all.forEach(r => {
+      const d = toDate(r.salida);
+      if (d.getFullYear() === year) monthData[d.getMonth()]++;
+    });
+    const max = Math.max(...monthData, 1);
+    $('#monthChart').innerHTML = monthData.map((n, i) => {
+      const h = (n / max) * 100;
+      return `
+        <div class="month-bar-wrap">
+          <div class="month-bar" style="height:${h}%">
+            ${n > 0 ? `<span class="month-bar-value">${n}</span>` : ''}
+          </div>
+          <div class="month-bar-label">${MESES[i].slice(0,3)}</div>
+        </div>
+      `;
+    }).join('');
+
+    // Top cargos
+    const porCargo = {};
+    all.forEach(r => {
+      const c = r.cargo || 'Sin definir';
+      porCargo[c] = (porCargo[c] || 0) + 1;
+    });
+    const topRoles = Object.entries(porCargo)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 8);
+    const maxRole = Math.max(...topRoles.map(([, n]) => n), 1);
+    const topRolesCont = $('#topRoles');
+    if (topRoles.length === 0) {
+      topRolesCont.innerHTML = `<div class="empty"><i class="ph ph-briefcase"></i>Sin datos de cargos</div>`;
+    } else {
+      topRolesCont.innerHTML = topRoles.map(([c, n]) => `
+        <div class="role-row">
+          <div class="role-head">
+            <span class="role-name">${c}</span>
+            <span class="role-count">${n}</span>
+          </div>
+          <div class="role-bar">
+            <div class="role-fill" style="width:${(n/maxRole)*100}%"></div>
+          </div>
+        </div>
+      `).join('');
+    }
+  }
+
+  /* ============================================================
+     11. VISTA: TIENDAS
+     ============================================================ */
+  function renderStoreCards() {
+    const cont = $('#storeCards');
+    cont.innerHTML = state.data.stores.map(t => {
+      const total = state.data.records.filter(r => r.tienda === t.id).length;
+      return `
+        <div class="store-card-lg">
+          <div class="store-card-actions">
+            <button class="row-action" data-edit-store="${t.id}" title="Editar">
+              <i class="ph ph-pencil-simple"></i>
+            </button>
+          </div>
+          <div class="store-card-name">${t.nombre}</div>
+          <div class="store-card-city" style="margin-bottom:14px"><i class="ph ph-map-pin" style="vertical-align:-2px"></i> ${t.ciudad || 'Sin ciudad'}</div>
+          <div class="store-card-stats">
+            <div class="store-stat">
+              <span class="store-stat-num">${t.personal}</span>
+              <span class="store-stat-lbl">Personal</span>
+            </div>
+            <div class="store-stat">
+              <span class="store-stat-num">${total}</span>
+              <span class="store-stat-lbl">Registros</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    $$('[data-edit-store]').forEach(btn => {
+      btn.addEventListener('click', () => openStoreModal(btn.dataset.editStore));
+    });
+  }
+
+  /* ============================================================
+     12. MODAL: REGISTRO (Crear / Editar)
+     ============================================================ */
+  function openRecordModal(record = null) {
+    const modal = $('#modalRecord');
+    const isEdit = !!record;
+    $('#modalTitle').textContent = isEdit ? 'Editar registro' : 'Nuevo registro';
+    $('#btnDelete').hidden = !isEdit;
+
+    populateFilters(); // refresca selects
+
+    $('#recordId').value = record?.id || '';
+    $('#fEmpleado').value = record?.empleado || '';
+    $('#fCargo').value = record?.cargo || '';
+    $('#fTienda').value = record?.tienda || state.data.stores[0]?.id || '';
+    $('#fTipo').value = record?.tipo || 'vacaciones';
+    $('#fSalida').value = record?.salida || fmtISO(new Date());
+    $('#fRegreso').value = record?.regreso || fmtISO(new Date());
+    $('#fObservaciones').value = record?.observaciones || '';
+
+    modal.hidden = false;
+    setTimeout(() => $('#fEmpleado').focus(), 100);
+  }
+
+  function closeRecordModal() {
+    $('#modalRecord').hidden = true;
+  }
+
+  function saveRecord(e) {
+    e.preventDefault();
+    const id = $('#recordId').value || uid();
+    const data = {
+      id,
+      empleado: $('#fEmpleado').value.trim(),
+      cargo: $('#fCargo').value.trim(),
+      tienda: $('#fTienda').value,
+      tipo: $('#fTipo').value,
+      salida: $('#fSalida').value,
+      regreso: $('#fRegreso').value,
+      observaciones: $('#fObservaciones').value.trim(),
+      updated: new Date().toISOString()
+    };
+
+    // Validación
+    if (toDate(data.regreso) < toDate(data.salida)) {
+      toast('La fecha de regreso debe ser igual o posterior a la de salida', 'error');
+      return;
+    }
+
+    // Guardar/actualizar
+    const idx = state.data.records.findIndex(r => r.id === id);
+    if (idx >= 0) {
+      state.data.records[idx] = { ...state.data.records[idx], ...data };
+      toast('Registro actualizado', 'success');
+    } else {
+      state.data.records.push({ ...data, created: new Date().toISOString() });
+      toast('Registro creado', 'success');
+    }
+
+    // Guardar cargo a la lista si es nuevo
+    if (data.cargo && !state.data.cargos.includes(data.cargo)) {
+      state.data.cargos.push(data.cargo);
+    }
+
+    db.save(state.data);
+    closeRecordModal();
+    render();
+  }
+
+  function deleteRecord() {
+    const id = $('#recordId').value;
+    if (!id) return;
+    const rec = state.data.records.find(r => r.id === id);
+    if (!rec) return;
+    if (!confirm(`¿Eliminar el registro de ${rec.empleado}?`)) return;
+    state.data.records = state.data.records.filter(r => r.id !== id);
+    db.save(state.data);
+    closeRecordModal();
+    render();
+    toast('Registro eliminado', 'success');
+  }
+
+  /* ============================================================
+     13. MODAL: DETALLE DE DÍA
+     ============================================================ */
+  function openDayModal(date, events) {
+    if (events.length === 0) {
+      // Sin eventos → abrir directamente nuevo registro con esa fecha
+      openRecordModal();
+      $('#fSalida').value = fmtISO(date);
+      $('#fRegreso').value = fmtISO(date);
+      return;
+    }
+    $('#modalDayTitle').textContent = `${date.getDate()} de ${MESES[date.getMonth()]} de ${date.getFullYear()}`;
+    const body = $('#modalDayBody');
+    body.innerHTML = `
+      <div class="day-events-list">
+        ${events.map(e => {
+          const t = state.data.stores.find(s => s.id === e.tienda);
+          const est = calcularEstado(e);
+          return `
+            <div class="day-event-card">
+              <div class="avatar">${initials(e.empleado)}</div>
+              <div class="day-event-info">
+                <div class="day-event-name">${e.empleado}</div>
+                <div class="day-event-meta">${e.cargo || '—'} · ${t?.nombre || '—'}</div>
+                <div style="display:flex; gap:6px; margin-top:6px; flex-wrap:wrap">
+                  <span class="type-pill ${e.tipo}">${TIPOS[e.tipo]?.label}</span>
+                  <span class="status-pill ${est}">${cap(est)}</span>
+                  <span style="font-size:11px; color:var(--text-muted)"><i class="ph ph-calendar"></i> ${fmtHuman(e.salida)} → ${fmtHuman(e.regreso)}</span>
+                </div>
+              </div>
+              <div class="day-event-actions">
+                <button class="row-action" data-edit="${e.id}" title="Editar"><i class="ph ph-pencil-simple"></i></button>
+              </div>
+            </div>
+          `;
+        }).join('')}
+        <button class="btn btn-primary" id="dayAddNew" style="margin-top:8px; align-self:flex-start">
+          <i class="ph ph-plus"></i><span>Agregar registro este día</span>
+        </button>
+      </div>
+    `;
+    $('#modalDay').hidden = false;
+
+    $$('#modalDayBody [data-edit]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const rec = state.data.records.find(r => r.id === btn.dataset.edit);
+        if (rec) {
+          $('#modalDay').hidden = true;
+          openRecordModal(rec);
+        }
+      });
+    });
+    $('#dayAddNew').addEventListener('click', () => {
+      $('#modalDay').hidden = true;
+      openRecordModal();
+      $('#fSalida').value = fmtISO(date);
+      $('#fRegreso').value = fmtISO(date);
+    });
+  }
+
+  /* ============================================================
+     14. MODAL: TIENDAS
+     ============================================================ */
+  function openStoreModal(storeId = null) {
+    const t = storeId ? state.data.stores.find(s => s.id === storeId) : null;
+    $('#modalStoreTitle').textContent = t ? 'Editar tienda' : 'Nueva tienda';
+    $('#storeId').value = t?.id || '';
+    $('#sNombre').value = t?.nombre || '';
+    $('#sCiudad').value = t?.ciudad || '';
+    $('#sPersonal').value = t?.personal || 10;
+    $('#storeDelete').hidden = !t;
+    $('#modalStore').hidden = false;
+  }
+
+  function saveStore(e) {
+    e.preventDefault();
+    const id = $('#storeId').value || ('s' + Date.now().toString(36));
+    const data = {
+      id,
+      nombre: $('#sNombre').value.trim(),
+      ciudad: $('#sCiudad').value.trim(),
+      personal: parseInt($('#sPersonal').value) || 10
+    };
+    if (!data.nombre) {
+      toast('El nombre es obligatorio', 'error');
+      return;
+    }
+    const idx = state.data.stores.findIndex(s => s.id === id);
+    if (idx >= 0) {
+      state.data.stores[idx] = { ...state.data.stores[idx], ...data };
+      toast('Tienda actualizada', 'success');
+    } else {
+      state.data.stores.push(data);
+      toast('Tienda agregada', 'success');
+    }
+    db.save(state.data);
+    $('#modalStore').hidden = true;
+    render();
+  }
+
+  function deleteStore() {
+    const id = $('#storeId').value;
+    if (!id) return;
+    const t = state.data.stores.find(s => s.id === id);
+    if (!t) return;
+    const usados = state.data.records.filter(r => r.tienda === id).length;
+    let msg = `¿Eliminar la tienda "${t.nombre}"?`;
+    if (usados > 0) msg += `\n\nAtención: tiene ${usados} registro${usados !== 1 ? 's' : ''} asociado${usados !== 1 ? 's' : ''} que también serán eliminados.`;
+    if (!confirm(msg)) return;
+    state.data.stores = state.data.stores.filter(s => s.id !== id);
+    state.data.records = state.data.records.filter(r => r.tienda !== id);
+    db.save(state.data);
+    $('#modalStore').hidden = true;
+    render();
+    toast('Tienda eliminada', 'success');
+  }
+
+  /* ============================================================
+     15. EXPORT / IMPORT
+     ============================================================ */
+  function exportData() {
+    const blob = new Blob([JSON.stringify(state.data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const date = new Date().toISOString().slice(0, 10);
+    a.href = url;
+    a.download = `jamar-admin-backup-${date}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast('Respaldo descargado', 'success');
+  }
+
+  function importData(file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const incoming = JSON.parse(e.target.result);
+        if (!incoming.stores || !incoming.records) {
+          toast('Archivo no válido', 'error');
+          return;
+        }
+        if (!confirm('Esto reemplazará todos los datos actuales. ¿Continuar?')) return;
+        state.data = incoming;
+        db.save(state.data);
+        render();
+        toast('Datos importados correctamente', 'success');
+      } catch (err) {
+        toast('Error al leer el archivo', 'error');
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  /* ============================================================
+     16. TOAST NOTIFICATIONS
+     ============================================================ */
+  function toast(message, type = 'success') {
+    const cont = $('#toastContainer');
+    const div = document.createElement('div');
+    div.className = `toast ${type}`;
+    const icons = {
+      success: 'ph-check-circle',
+      error: 'ph-x-circle',
+      warning: 'ph-warning'
+    };
+    div.innerHTML = `<i class="ph ${icons[type] || 'ph-info'}"></i><span class="toast-text">${message}</span>`;
+    cont.appendChild(div);
+    setTimeout(() => {
+      div.classList.add('hiding');
+      setTimeout(() => div.remove(), 300);
+    }, 3000);
+  }
+
+  /* ============================================================
+     17. EVENT HANDLERS · WIRE UP
+     ============================================================ */
+  function bindEvents() {
+    // Navegación principal
+    $$('.nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const view = item.dataset.view;
+        const mod = item.dataset.module;
+        if (!view) return;
+        state.view = view;
+        if (view === 'module') state.currentModule = mod;
+        render();
+        // Cerrar sidebar en móvil
+        $('#sidebar').classList.remove('open');
+      });
+    });
+
+    // Calendario navegación
+    $('#prevMonth').addEventListener('click', () => {
+      state.currentDate = new Date(state.currentDate.getFullYear(), state.currentDate.getMonth() - 1, 1);
+      renderCalendar();
+    });
+    $('#nextMonth').addEventListener('click', () => {
+      state.currentDate = new Date(state.currentDate.getFullYear(), state.currentDate.getMonth() + 1, 1);
+      renderCalendar();
+    });
+    $('#todayBtn').addEventListener('click', () => {
+      state.currentDate = new Date();
+      renderCalendar();
+    });
+
+    // Atajos teclado
+    document.addEventListener('keydown', (e) => {
+      if (e.target.matches('input, select, textarea')) return;
+      if (state.view !== 'calendar') return;
+      if (e.key === 'ArrowLeft') $('#prevMonth').click();
+      if (e.key === 'ArrowRight') $('#nextMonth').click();
+      if (e.key.toLowerCase() === 't') $('#todayBtn').click();
+    });
+
+    // Nuevo registro
+    $('#btnNewRecord').addEventListener('click', () => openRecordModal());
+
+    // Modal registro
+    $('#modalClose').addEventListener('click', closeRecordModal);
+    $('#btnCancel').addEventListener('click', closeRecordModal);
+    $('#btnDelete').addEventListener('click', deleteRecord);
+    $('#recordForm').addEventListener('submit', saveRecord);
+
+    // Modal día
+    $('#modalDayClose').addEventListener('click', () => $('#modalDay').hidden = true);
+
+    // Modal tienda
+    $('#btnAddStore').addEventListener('click', () => openStoreModal());
+    $('#modalStoreClose').addEventListener('click', () => $('#modalStore').hidden = true);
+    $('#storeCancel').addEventListener('click', () => $('#modalStore').hidden = true);
+    $('#storeDelete').addEventListener('click', deleteStore);
+    $('#storeForm').addEventListener('submit', saveStore);
+
+    // Click fuera del modal
+    $$('.modal-backdrop').forEach(bd => {
+      bd.addEventListener('click', (e) => {
+        if (e.target === bd) bd.hidden = true;
+      });
+    });
+
+    // Búsqueda global
+    let searchTimeout;
+    $('#globalSearch').addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        state.filters.search = e.target.value;
+        render();
+      }, 200);
+    });
+
+    // Filtros del calendario
+    ['#filterTienda', '#filterTipo', '#filterEstado', '#filterCargo'].forEach(sel => {
+      $(sel).addEventListener('change', (e) => {
+        const key = sel.replace('#filter', '').toLowerCase();
+        state.filters[key] = e.target.value;
+        renderCalendar();
+      });
+    });
+
+    // Filtros del módulo
+    ['#modFilterTienda', '#modFilterEstado', '#modFilterMes', '#modFilterAnio'].forEach(sel => {
+      $(sel).addEventListener('change', () => renderModuleTable());
+    });
+
+    // Export / Import
+    $('#btnExport').addEventListener('click', exportData);
+    $('#btnImport').addEventListener('click', () => $('#importFile').click());
+    $('#importFile').addEventListener('change', (e) => {
+      if (e.target.files[0]) importData(e.target.files[0]);
+      e.target.value = '';
+    });
+    $('#btnSettings').addEventListener('click', () => {
+      if (confirm('¿Restablecer todos los datos? Esto eliminará TODO. (Te recomendamos exportar primero un respaldo.)')) {
+        state.data = db.reset();
+        render();
+        toast('Sistema restablecido', 'warning');
+      }
+    });
+
+    // Sidebar móvil
+    $('#sidebarToggle').addEventListener('click', () => $('#sidebar').classList.add('open'));
+    $('#sidebarClose').addEventListener('click', () => $('#sidebar').classList.remove('open'));
+
+    // Auto-validación: fecha regreso >= salida
+    $('#fSalida').addEventListener('change', () => {
+      const s = $('#fSalida').value;
+      const r = $('#fRegreso').value;
+      if (s && (!r || r < s)) $('#fRegreso').value = s;
+    });
+  }
+
+  /* ============================================================
+     18. ARRANQUE
+     ============================================================ */
+  function init() {
+    bindEvents();
+    render();
+    // Pequeño easter egg corporativo en consola
+    console.log(
+      '%c JAMAR %c Control de Administradores ',
+      'background:#C8102E; color:#fff; font-weight:bold; padding:4px 8px; border-radius:4px 0 0 4px;',
+      'background:#101828; color:#fff; padding:4px 8px; border-radius:0 4px 4px 0;'
+    );
+    console.log('Dashboard Admin cargado. Total registros:', state.data.records.length);
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+})();
+
+</script>
+</body>
+</html>
