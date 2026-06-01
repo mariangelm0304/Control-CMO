@@ -4394,16 +4394,84 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   /* ============================================================
      18. ARRANQUE
      ============================================================ */
-  function init() {
+
+  /**
+   * URL del archivo JSON de respaldo en GitHub.
+   * INSTRUCCIONES:
+   *   1. Sube tu archivo JSON de respaldo al repositorio GitHub (p. ej. "backup.json").
+   *   2. Reemplaza la URL de abajo por la URL RAW de ese archivo.
+   *      Ejemplo: https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/backup.json
+   *   3. Cada vez que exportes un respaldo desde el tablero, súbelo a GitHub
+   *      con el mismo nombre y el tablero lo cargará automáticamente en cualquier PC.
+   *
+   * Mientras la URL esté vacía ('') o sea null, el sistema funciona solo con localStorage.
+   */
+  const GITHUB_BACKUP_URL = '';   // <-- pon aquí tu URL raw de GitHub
+
+  /**
+   * Intenta cargar datos desde GitHub.
+   * Si el JSON remoto es más reciente que localStorage, lo usa y actualiza localStorage.
+   * Si falla o no hay URL configurada, usa lo que haya en localStorage.
+   */
+  async function loadFromGithub() {
+    if (!GITHUB_BACKUP_URL) return null;
+    try {
+      // Cache-bust para evitar que el navegador devuelva una versión vieja
+      const url = GITHUB_BACKUP_URL + '?t=' + Date.now();
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const remote = await res.json();
+      if (!remote.stores || !remote.records) throw new Error('Estructura inválida');
+
+      // Comparar timestamps: usar el más reciente
+      const localRaw  = localStorage.getItem(DB_KEY);
+      const localData = localRaw ? JSON.parse(localRaw) : null;
+      const remoteTs  = new Date(remote.updated  || 0).getTime();
+      const localTs   = new Date(localData?.updated || 0).getTime();
+
+      if (remoteTs >= localTs) {
+        // El respaldo de GitHub es igual o más nuevo → lo adoptamos
+        localStorage.setItem(DB_KEY, JSON.stringify(remote));
+        console.log('%c✓ Datos cargados desde GitHub (' + new Date(remoteTs).toLocaleString() + ')',
+          'color:#12B76A; font-weight:bold');
+        return remote;
+      } else {
+        console.log('%c· GitHub tiene datos más viejos que localStorage. Se mantiene localStorage.',
+          'color:#F79009');
+        return null;
+      }
+    } catch (e) {
+      console.warn('No se pudo cargar el respaldo de GitHub:', e.message);
+      return null;
+    }
+  }
+
+  async function init() {
+    // 1. Intentar sincronizar con GitHub antes de renderizar
+    const remoteData = await loadFromGithub();
+    if (remoteData) {
+      // Recargar state.data con los datos frescos de GitHub
+      state.data = remoteData;
+      // Asegurar array de empleados
+      if (!Array.isArray(state.data.employees)) state.data.employees = [...DEFAULT_EMPLOYEES];
+    }
+
     bindEvents();
     render();
-    // Pequeño easter egg corporativo en consola
+
+    // Easter egg corporativo en consola
     console.log(
       '%c JAMAR %c Control de Personal ',
       'background:#C8102E; color:#fff; font-weight:bold; padding:4px 8px; border-radius:4px 0 0 4px;',
       'background:#101828; color:#fff; padding:4px 8px; border-radius:0 4px 4px 0;'
     );
     console.log('Sistema cargado. Total de registros:', state.data.records.length);
+    if (GITHUB_BACKUP_URL) {
+      console.log('GitHub sync activo →', GITHUB_BACKUP_URL);
+    } else {
+      console.log('%c⚠ GITHUB_BACKUP_URL no configurada. Edita el HTML y agrega la URL raw de tu JSON.',
+        'color:#F79009; font-weight:bold');
+    }
   }
 
   document.addEventListener('DOMContentLoaded', init);
