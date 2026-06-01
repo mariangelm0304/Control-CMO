@@ -1,0 +1,1004 @@
+{
+  "version": 2,
+  "stores": [
+    {
+      "id": "s01",
+      "nombre": "Jamar Principal",
+      "ciudad": "Barranquilla",
+      "personal": 89
+    }
+  ],
+  "employees": [
+    {
+      "id": "e001",
+      "nombre": "DIAZ QUINTERO CARLOS ALBERTO",
+      "cargo": "DIRECTOR DE CATEGORIA DE PRODUCTO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e002",
+      "nombre": "GONZALEZ RUBIO WILLIAM ALEXANDER",
+      "cargo": "DIRECTOR DE CATEGORIA DE PRODUCTO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e003",
+      "nombre": "GOMEZ PEREZ REINALDO DE JESUS",
+      "cargo": "GERENTE DE VENTAS",
+      "tienda": "s01"
+    },
+    {
+      "id": "e004",
+      "nombre": "NORIEGA ORTEGA SILVANA MILENA",
+      "cargo": "DIRECTOR DE MERCADEO RETAIL",
+      "tienda": "s01"
+    },
+    {
+      "id": "e005",
+      "nombre": "PAEZ BARRANCO DALILA MARIA",
+      "cargo": "DIRECTOR VISUAL MERCHANDISING",
+      "tienda": "s01"
+    },
+    {
+      "id": "e006",
+      "nombre": "MALDONADO MATUTE JOSE RAMON",
+      "cargo": "SUPERVISOR DE GRUPOS DE TRABAJO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e007",
+      "nombre": "CUETO PRIETO ALVARO ALONSO",
+      "cargo": "GERENTE COMERCIAL",
+      "tienda": "s01"
+    },
+    {
+      "id": "e008",
+      "nombre": "TORRES DOMINGUEZ GLORIA ESTHER",
+      "cargo": "VICEPRESIDENTE CMO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e009",
+      "nombre": "MARQUEZ VARGAS HEIDY PATRICIA",
+      "cargo": "DIRECTOR DE RETENCION",
+      "tienda": "s01"
+    },
+    {
+      "id": "e010",
+      "nombre": "CORTES PORTELA DIANA PATRICIA",
+      "cargo": "DIRECTOR DE TRADE MARCA",
+      "tienda": "s01"
+    },
+    {
+      "id": "e011",
+      "nombre": "MARTHE MORALES ROSSANA EUGENIA",
+      "cargo": "JEFE DE CATEGORIA MENORES",
+      "tienda": "s01"
+    },
+    {
+      "id": "e012",
+      "nombre": "MARTINEZ GRAJALES LETICIA ELENA",
+      "cargo": "DIRECTOR AGENCIAS DE MERCADEO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e013",
+      "nombre": "HEREIRA LOPEZ ADELA MARIA",
+      "cargo": "GERENTE RETAIL",
+      "tienda": "s01"
+    },
+    {
+      "id": "e014",
+      "nombre": "FLORIAN BOLAÑO SHIRLEY VANESSA",
+      "cargo": "JEFE DE RETENCION Y FIDELIZACION DE OTROS SEGMENTOS",
+      "tienda": "s01"
+    },
+    {
+      "id": "e015",
+      "nombre": "BARRERA VEGA CARLOS MARIO",
+      "cargo": "JEFE ZONAL",
+      "tienda": "s01"
+    },
+    {
+      "id": "e016",
+      "nombre": "JURADO MORALES JOSE ANTONIO",
+      "cargo": "ESPECIALISTA EN PLATAFORMA DE CANALES",
+      "tienda": "s01"
+    },
+    {
+      "id": "e017",
+      "nombre": "GOENAGA PERTUZ JENIFFER PAOLA",
+      "cargo": "JEFE DE CATEGORIA",
+      "tienda": "s01"
+    },
+    {
+      "id": "e018",
+      "nombre": "REALES NAVARRO MARISELA ESTHER",
+      "cargo": "ESPECIALISTA DE NAVEGACION COMERCIAL",
+      "tienda": "s01"
+    },
+    {
+      "id": "e019",
+      "nombre": "GUZMAN PEDROZO HAINER MILEP",
+      "cargo": "JEFE DE PORTAFOLIO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e020",
+      "nombre": "RUIZ MORA JACKLIN TATIANA",
+      "cargo": "JEFE DE RETENCION Y FIDELIZACION DE CLIENTES PREFERENCIALES",
+      "tienda": "s01"
+    },
+    {
+      "id": "e021",
+      "nombre": "VELASQUEZ GARRIDO PAULA SOFIA",
+      "cargo": "SUPERVISOR DE GRUPOS DE TRABAJO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e022",
+      "nombre": "CANDAMA SANDOVAL LEANDRO ENRIQUE",
+      "cargo": "JEFE DE ABASTECIMIENTO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e023",
+      "nombre": "HERRERA JIMENEZ SISTINA",
+      "cargo": "JEFE DE TIENDA SUPERNUMERARIO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e024",
+      "nombre": "PEÑA MARTINEZ MARIA FERNANDA",
+      "cargo": "ANALISTA II SOCIALIZER",
+      "tienda": "s01"
+    },
+    {
+      "id": "e025",
+      "nombre": "PINTO BARROS YARELIS ALICIA",
+      "cargo": "JEFE DE CANAL NO PRESENCIAL",
+      "tienda": "s01"
+    },
+    {
+      "id": "e026",
+      "nombre": "PUGLIESE ARAUJO ANA MILENA",
+      "cargo": "DIRECTOR DE CONTENIDOS",
+      "tienda": "s01"
+    },
+    {
+      "id": "e027",
+      "nombre": "CORREA QUIROZ YEIS YAIR",
+      "cargo": "COORDINADOR DE MERCADEO RETAIL",
+      "tienda": "s01"
+    },
+    {
+      "id": "e028",
+      "nombre": "DE LA ROSA DAVILA IAJANNY",
+      "cargo": "PROFESIONAL DE VISUAL MASTER A",
+      "tienda": "s01"
+    },
+    {
+      "id": "e029",
+      "nombre": "SANCHEZ VASQUEZ AKEMMYS MILENA",
+      "cargo": "ANALISTA I DE CONTENIDOS",
+      "tienda": "s01"
+    },
+    {
+      "id": "e030",
+      "nombre": "FERNANDEZ MONTERROSA YAMIT",
+      "cargo": "PROFESIONAL DE ABASTECIMIENTO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e031",
+      "nombre": "BARRERA CRISMATT EDINSON RAFAEL",
+      "cargo": "ANALISTA I DE MERCADEO RETAIL",
+      "tienda": "s01"
+    },
+    {
+      "id": "e032",
+      "nombre": "VILLA ALBUS CRISTIAN DAVID",
+      "cargo": "PROFESIONAL DE VISUAL SENIOR A",
+      "tienda": "s01"
+    },
+    {
+      "id": "e033",
+      "nombre": "CORRALES LUNA SAMIR",
+      "cargo": "PROFESIONAL VISUAL SUPERNUMERARIO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e034",
+      "nombre": "ORTEGA ARENAS LILIANA LUCIA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01"
+    },
+    {
+      "id": "e035",
+      "nombre": "GARCIA PALMET FANNY ESTHER",
+      "cargo": "JEFE TRADE MARKETING",
+      "tienda": "s01"
+    },
+    {
+      "id": "e036",
+      "nombre": "MAURY SALAS ANDREA CAROLINA",
+      "cargo": "COORDINADOR DE INTEGRACION DE CANALES",
+      "tienda": "s01"
+    },
+    {
+      "id": "e037",
+      "nombre": "MENDOZA CRESPO KELLY JOHANA",
+      "cargo": "ANALISTA I DE OPERACIONES WEB",
+      "tienda": "s01"
+    },
+    {
+      "id": "e038",
+      "nombre": "REALES DE LOS RIOS LUIS ALBERTO",
+      "cargo": "JEFE UX/UI",
+      "tienda": "s01"
+    },
+    {
+      "id": "e039",
+      "nombre": "CABRERA ARENAS ANDREA CAROLINA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER A",
+      "tienda": "s01"
+    },
+    {
+      "id": "e040",
+      "nombre": "CARRILLO CAMACHO KAREN DAYANA",
+      "cargo": "ANALISTA DE MERCADEO Y ALIANZAS",
+      "tienda": "s01"
+    },
+    {
+      "id": "e041",
+      "nombre": "CELEDON NIEBLES LISBEIDES ANGELICA",
+      "cargo": "SUPERVISOR DE GRUPOS DE TRABAJO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e042",
+      "nombre": "BARRIOS MEYER LAURINE MARITZA",
+      "cargo": "PROFESIONAL DE VISUAL SENIOR A",
+      "tienda": "s01"
+    },
+    {
+      "id": "e043",
+      "nombre": "JIMENEZ BOLAÑOS FRANYERLIN",
+      "cargo": "ANALISTA CALIDAD CANAL NO PRESENCIAL",
+      "tienda": "s01"
+    },
+    {
+      "id": "e044",
+      "nombre": "SAKER BARRERA CHRISTIAN ALI",
+      "cargo": "JEFE DE ANALITICIA",
+      "tienda": "s01"
+    },
+    {
+      "id": "e045",
+      "nombre": "VALLEJO ROCHA VALENTINA",
+      "cargo": "PROFESIONAL DECORA",
+      "tienda": "s01"
+    },
+    {
+      "id": "e046",
+      "nombre": "GUTIERREZ ACOSTA VIANIS MARIA",
+      "cargo": "INGENIERO VISIBILIDAD Y ANALITICA",
+      "tienda": "s01"
+    },
+    {
+      "id": "e047",
+      "nombre": "CAMPO CONSTANTE DAYANA MERCEDES",
+      "cargo": "ANALISTA II SOCIALIZER",
+      "tienda": "s01"
+    },
+    {
+      "id": "e048",
+      "nombre": "RUIZ CUENCA CARLOS DANIEL",
+      "cargo": "COORDINADOR EXPERIENCIA DE USUARIO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e049",
+      "nombre": "POLANCO MEJIA MARIA CAROLINA",
+      "cargo": "SUPERVISOR DE GRUPOS DE TRABAJO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e050",
+      "nombre": "MALDONADO PEÑA LINDA SARAY",
+      "cargo": "JEFE ECOSISTEMA DIGITAL",
+      "tienda": "s01"
+    },
+    {
+      "id": "e051",
+      "nombre": "VARGAS PATIÑO YOLIMA ESTELA",
+      "cargo": "PROFESIONAL DE ENTRENAMIENTO DE COLCHONE",
+      "tienda": "s01"
+    },
+    {
+      "id": "e052",
+      "nombre": "GRAU RUBIO JEAN PIERRE",
+      "cargo": "ESPECIALISTA BI CMO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e053",
+      "nombre": "OROZCO ROJAS JAIDER JUNIOR",
+      "cargo": "AUXILIAR SUPERNUMERARIO DE TIENDA",
+      "tienda": "s01"
+    },
+    {
+      "id": "e054",
+      "nombre": "VELEZ CALDERON EDWIN ALEXANDER",
+      "cargo": "TECNICO DE MANTENIMIENTO LOCATIVO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e055",
+      "nombre": "ALCALA GRANJA ALEJANDRO MARIO",
+      "cargo": "ANALISTA DE SOFTWARE",
+      "tienda": "s01"
+    },
+    {
+      "id": "e056",
+      "nombre": "OTALORA POLO VALENTINA",
+      "cargo": "AUXILIAR MERCADEO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e057",
+      "nombre": "PALOMINO TURIZO DANIELA PATRICIA",
+      "cargo": "ANALISTA PERFORMANCE",
+      "tienda": "s01"
+    },
+    {
+      "id": "e058",
+      "nombre": "DUQUE DUQUE YURI MARCELA",
+      "cargo": "ANALISTA DE MICROMERCADEO Y ALIANZAS",
+      "tienda": "s01"
+    },
+    {
+      "id": "e059",
+      "nombre": "GALINDO RIVERA YERLESY DAYANA",
+      "cargo": "PROFESIONAL PROJECT PLANNER",
+      "tienda": "s01"
+    },
+    {
+      "id": "e060",
+      "nombre": "GUERRERO CASTILLO KENNY DAVID",
+      "cargo": "ANALISTA II NUEVOS NEGOCIOS",
+      "tienda": "s01"
+    },
+    {
+      "id": "e061",
+      "nombre": "SILVA CABALLERO BETSY BIBIANA",
+      "cargo": "JEFE DE FORMACION Y ENTRENAMIENTO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e062",
+      "nombre": "ROJANO ROJANO JOSSIE ESTEBAN",
+      "cargo": "PROFESIONAL EN PRODUCCION  AUDIOVISUAL",
+      "tienda": "s01"
+    },
+    {
+      "id": "e063",
+      "nombre": "SOTO ALVAREZ MIGUEL ALEJANDRO",
+      "cargo": "ESPECIALISTA PROJECT MANAGER EN INNOVACI",
+      "tienda": "s01"
+    },
+    {
+      "id": "e064",
+      "nombre": "TORRES MARINO ANGIE MELISSA",
+      "cargo": "JEFE DE COMERCIO EXTERIOR",
+      "tienda": "s01"
+    },
+    {
+      "id": "e065",
+      "nombre": "FONSECA SEGURA DANIEL EDGARDO",
+      "cargo": "AUXILIAR PGP",
+      "tienda": "s01"
+    },
+    {
+      "id": "e066",
+      "nombre": "AREVALO ARROYO CARLOS ALBERTO",
+      "cargo": "PROFESIONAL DESARROLLADOR AUDIOVISUAL",
+      "tienda": "s01"
+    },
+    {
+      "id": "e067",
+      "nombre": "RIVERO LEAL SEBASTIAN",
+      "cargo": "PROFESIONAL DE ABASTECIMIENTO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e068",
+      "nombre": "ROMERO PELAEZ LESLIE PAOLA",
+      "cargo": "PROFESIONAL ANIMADOR NOTION GRAPHIC",
+      "tienda": "s01"
+    },
+    {
+      "id": "e069",
+      "nombre": "FONTALVO MARTINEZ MIGUEL JESUS",
+      "cargo": "PROFESIONAL COMERCIO EXTERIOR",
+      "tienda": "s01"
+    },
+    {
+      "id": "e070",
+      "nombre": "LOGREIRA LOPEZ JAILYN ROSIRIS",
+      "cargo": "PROFESIONAL COMERCIO EXTERIOR",
+      "tienda": "s01"
+    },
+    {
+      "id": "e071",
+      "nombre": "OSPINA PULIDO ISABELLA ESTHER",
+      "cargo": "ANALISTA DE COMERCIO EXTERIOR",
+      "tienda": "s01"
+    },
+    {
+      "id": "e072",
+      "nombre": "ZUÑIGA CARDENAS ALBERTO RAFAEL",
+      "cargo": "COORDINADOR DE PROYECTOS",
+      "tienda": "s01"
+    },
+    {
+      "id": "e073",
+      "nombre": "BOLAÑOS PEREZ RICARDO DE JESUS",
+      "cargo": "PROFESIONAL ENTRENAMIENTO DE VENTA CNP",
+      "tienda": "s01"
+    },
+    {
+      "id": "e074",
+      "nombre": "PIZARRO MADURO RODOLFO ENRIQUE",
+      "cargo": "PROFESIONAL ENTRENAMIENTO DE VENTAS",
+      "tienda": "s01"
+    },
+    {
+      "id": "e075",
+      "nombre": "TORRES ORTIZ CARLOS EDUARDO",
+      "cargo": "COORDINADOR DE MANTENIMIENTO",
+      "tienda": "s01"
+    },
+    {
+      "id": "e076",
+      "nombre": "RESTREPO SERNA TATIANA",
+      "cargo": "DIRECTOR DE ARTE",
+      "tienda": "s01"
+    },
+    {
+      "id": "e077",
+      "nombre": "BENAVIDES PETRO JAVIER EMILIO",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01"
+    },
+    {
+      "id": "e078",
+      "nombre": "BRIS GOMEZ JUAN CARLOS",
+      "cargo": "DISEÑADOR GRAFICO SENIOR",
+      "tienda": "s01"
+    },
+    {
+      "id": "e079",
+      "nombre": "HERNANDEZ RODRIGUEZ ALEX JAIR",
+      "cargo": "ANALISTA SISTEMATICA COMERCIAL",
+      "tienda": "s01"
+    },
+    {
+      "id": "e080",
+      "nombre": "CONSUEGRA NARVAEZ KEILA ANDREA",
+      "cargo": "COORDINADOR DE CONTENIDOS",
+      "tienda": "s01"
+    },
+    {
+      "id": "e081",
+      "nombre": "CAICEDO LUCAS JORGE MARIO",
+      "cargo": "PROFESIONAL CONTENT MANAGER",
+      "tienda": "s01"
+    },
+    {
+      "id": "e082",
+      "nombre": "RODRIGUEZ ZARATE MONICA ANDREA",
+      "cargo": "PROFESIONAL COPYWRITER DE AGENCIA",
+      "tienda": "s01"
+    },
+    {
+      "id": "e083",
+      "nombre": "MOLINA MERIÑO ISABELLA",
+      "cargo": "ANALISTA II PLANER AGENCIA CREATIVA",
+      "tienda": "s01"
+    },
+    {
+      "id": "e084",
+      "nombre": "MARTINEZ BETANCOURT LUIS FERNANDO",
+      "cargo": "ESPECIALISTA DE PAUTA",
+      "tienda": "s01"
+    },
+    {
+      "id": "e085",
+      "nombre": "NAVARRO MONTENEGRO RUBEN DARIO",
+      "cargo": "ESPECIALISTA DE CONVERSION",
+      "tienda": "s01"
+    },
+    {
+      "id": "e086",
+      "nombre": "ROMO CASTILLO DAYANA PAOLA",
+      "cargo": "APRENDIZ DIGITAL",
+      "tienda": "s01"
+    },
+    {
+      "id": "e087",
+      "nombre": "OSPINO FLOREZ KEVIN JOSE",
+      "cargo": "APRENDIZ ALMACEN",
+      "tienda": "s01"
+    },
+    {
+      "id": "e088",
+      "nombre": "SPATH GEDEON VICTOR ALFONSO",
+      "cargo": "APRENDIZ DISEÑO MULTIMEDIA",
+      "tienda": "s01"
+    },
+    {
+      "id": "e089",
+      "nombre": "VESGA LASTRA CARLOS DANIEL",
+      "cargo": "CIENTIFICO DE DATOS SENIOR",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppikzy7",
+      "nombre": "ARRIETA CONTRERAS JULEIDY PATRICIA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER A",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppimhix",
+      "nombre": "OSPINO DIAZGRANADOS ANGELICA PATRICIA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER A",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppipgau",
+      "nombre": "ESPELETA DORIA LEYDIS JHOANA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER A",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppiqg4f",
+      "nombre": "CALDERON FONSECA LYDA CONSTANZA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppismc6",
+      "nombre": "URBINA PALACIOS ANDREA VANESSA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER A",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppit6js",
+      "nombre": "CASTELLANOS BALDONADO MELANIE",
+      "cargo": "",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppixh6v",
+      "nombre": "AISLANT ECHEVERRI STEVEN",
+      "cargo": "PROFESIONAL DE VISUAL MASTER A",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppiz0cs",
+      "nombre": "BURITICA PADILLA RODRIGO ADOLFO",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppj1d61",
+      "nombre": "SORA BELTRAN ALIXON MERLEY",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppj2jw5",
+      "nombre": "BELTRAN ARISTIZABAL ELIZABETH",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppj3m3k",
+      "nombre": "RIOS CORREA WENDY VANESSA",
+      "cargo": "PROFESIONAL DE VISUAL SENIOR A",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppj4o4i",
+      "nombre": "MORENO DOMINGUEZ NATALIA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppj5pme",
+      "nombre": "TAPIAS CORTES OSCAR DAVID",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppj7d1w",
+      "nombre": "ALDANA JIMENEZ CARLOS ALBERTO",
+      "cargo": "PROFESIONAL VISUAL SUPERNUMERARIO",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppjbsbm",
+      "nombre": "OLARTE LUQUE JUAN GABRIEL",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01"
+    },
+    {
+      "id": "emppjd9u7",
+      "nombre": "CASTRO PEREZ SEBASTIAN ANDRES",
+      "cargo": "PROFESIONAL DE VISUAL SENIOR A",
+      "tienda": "s01"
+    }
+  ],
+  "records": [
+    {
+      "id": "rmplg8n02dvzf",
+      "empleado": "JUAN CARLO MUÑOZ",
+      "cargo": "Administrador de Tienda",
+      "tienda": "s09",
+      "tipo": "vacaciones",
+      "salida": "2026-06-16",
+      "regreso": "2026-07-07",
+      "observaciones": "Cubrirá Sistina Herrera",
+      "updated": "2026-05-25T16:57:15.122Z",
+      "created": "2026-05-25T16:57:15.122Z"
+    },
+    {
+      "id": "rmplgdpz6udcu",
+      "empleado": "HIBETH LOPEZ",
+      "cargo": "Administrador de Tienda",
+      "tienda": "s12",
+      "tipo": "vacaciones",
+      "salida": "2026-06-16",
+      "regreso": "2026-06-27",
+      "observaciones": "Cubrirá \tFredy De Alba",
+      "updated": "2026-05-25T17:01:12.258Z",
+      "created": "2026-05-25T17:01:12.258Z"
+    },
+    {
+      "id": "rmppihv706lcw",
+      "empleado": "PAEZ BARRANCO DALILA MARIA",
+      "cargo": "DIRECTOR VISUAL MERCHANDISING",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-07-21",
+      "regreso": "2026-08-12",
+      "observaciones": "",
+      "updated": "2026-05-28T13:11:29.580Z",
+      "created": "2026-05-28T13:11:29.580Z"
+    },
+    {
+      "id": "rmppikzy75s9q",
+      "empleado": "ARRIETA CONTRERAS JULEIDY PATRICIA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER A",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-12-23",
+      "regreso": "2027-01-12",
+      "observaciones": "",
+      "updated": "2026-05-28T13:13:55.711Z",
+      "created": "2026-05-28T13:13:55.711Z"
+    },
+    {
+      "id": "rmppimhix7em7",
+      "empleado": "OSPINO DIAZGRANADOS ANGELICA PATRICIA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER A",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-06-16",
+      "regreso": "2026-06-25",
+      "observaciones": "",
+      "updated": "2026-05-28T13:15:05.145Z",
+      "created": "2026-05-28T13:15:05.145Z"
+    },
+    {
+      "id": "rmppin63vjg3c",
+      "empleado": "GUZMAN PEDROZO HAINER MILEP",
+      "cargo": "JEFE DE PORTAFOLIO",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-06-30",
+      "regreso": "2026-07-04",
+      "observaciones": "",
+      "updated": "2026-05-28T13:15:37.003Z",
+      "created": "2026-05-28T13:15:37.003Z"
+    },
+    {
+      "id": "rmppio3g8946a",
+      "empleado": "DE LA ROSA DAVILA IAJANNY",
+      "cargo": "PROFESIONAL DE VISUAL MASTER A",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-06-30",
+      "regreso": "2026-07-21",
+      "observaciones": "",
+      "updated": "2026-05-28T13:16:20.216Z",
+      "created": "2026-05-28T13:16:20.216Z"
+    },
+    {
+      "id": "rmppipgauctm3",
+      "empleado": "ESPELETA DORIA LEYDIS JHOANA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER A",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-06-16",
+      "regreso": "2026-07-06",
+      "observaciones": "",
+      "updated": "2026-05-28T13:17:23.526Z",
+      "created": "2026-05-28T13:17:23.526Z"
+    },
+    {
+      "id": "rmppiqg4fgk6r",
+      "empleado": "CALDERON FONSECA LYDA CONSTANZA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-08-06",
+      "regreso": "2026-08-28",
+      "observaciones": "",
+      "updated": "2026-05-28T13:18:09.951Z",
+      "created": "2026-05-28T13:18:09.951Z"
+    },
+    {
+      "id": "rmppirgr1t3kq",
+      "empleado": "ORTEGA ARENAS LILIANA LUCIA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-09-07",
+      "regreso": "2026-09-25",
+      "observaciones": "",
+      "updated": "2026-05-28T13:18:57.421Z",
+      "created": "2026-05-28T13:18:57.421Z"
+    },
+    {
+      "id": "rmppismc6krb1",
+      "empleado": "URBINA PALACIOS ANDREA VANESSA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER A",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-05-06",
+      "regreso": "2026-05-25",
+      "observaciones": "",
+      "updated": "2026-05-28T13:19:51.318Z",
+      "created": "2026-05-28T13:19:51.318Z"
+    },
+    {
+      "id": "rmppitzk2t4i3",
+      "empleado": "CASTELLANOS BALDONADO MELANIE",
+      "cargo": "PROFESIONAL DE VISUAL SENIOR A",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-08-05",
+      "regreso": "2026-08-18",
+      "observaciones": "",
+      "updated": "2026-05-28T13:20:55.106Z",
+      "created": "2026-05-28T13:20:55.106Z"
+    },
+    {
+      "id": "rmppiwbrgvwjd",
+      "empleado": "CABRERA ARENAS ANDREA CAROLINA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER A",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-06-16",
+      "regreso": "2026-06-18",
+      "observaciones": "",
+      "updated": "2026-05-28T13:22:44.236Z",
+      "created": "2026-05-28T13:22:44.236Z"
+    },
+    {
+      "id": "rmppixh6umm7i",
+      "empleado": "AISLANT ECHEVERRI STEVEN",
+      "cargo": "PROFESIONAL DE VISUAL MASTER A",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-08-10",
+      "regreso": "2026-08-19",
+      "observaciones": "",
+      "updated": "2026-05-28T13:23:37.926Z",
+      "created": "2026-05-28T13:23:37.926Z"
+    },
+    {
+      "id": "rmppiz0cshe25",
+      "empleado": "BURITICA PADILLA RODRIGO ADOLFO",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-06-19",
+      "regreso": "2026-07-01",
+      "observaciones": "",
+      "updated": "2026-05-28T13:24:49.420Z",
+      "created": "2026-05-28T13:24:49.420Z"
+    },
+    {
+      "id": "rmppizyaylrxs",
+      "empleado": "BARRIOS MEYER LAURINE MARITZA",
+      "cargo": "PROFESIONAL DE VISUAL SENIOR A",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-07-21",
+      "regreso": "2026-08-11",
+      "observaciones": "",
+      "updated": "2026-05-28T13:25:33.419Z",
+      "created": "2026-05-28T13:25:33.419Z"
+    },
+    {
+      "id": "rmppj1d61w2y9",
+      "empleado": "SORA BELTRAN ALIXON MERLEY",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-09-16",
+      "regreso": "2026-09-29",
+      "observaciones": "",
+      "updated": "2026-05-28T13:26:39.337Z",
+      "created": "2026-05-28T13:26:39.337Z"
+    },
+    {
+      "id": "rmppj2jw5b64v",
+      "empleado": "BELTRAN ARISTIZABAL ELIZABETH",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-06-30",
+      "regreso": "2026-07-06",
+      "observaciones": "",
+      "updated": "2026-05-28T13:27:34.709Z",
+      "created": "2026-05-28T13:27:34.709Z"
+    },
+    {
+      "id": "rmppj3m3j03dl",
+      "empleado": "RIOS CORREA WENDY VANESSA",
+      "cargo": "PROFESIONAL DE VISUAL SENIOR A",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-12-28",
+      "regreso": "2027-01-19",
+      "observaciones": "",
+      "updated": "2026-05-28T13:28:24.223Z",
+      "created": "2026-05-28T13:28:24.223Z"
+    },
+    {
+      "id": "rmppj4o4ik24y",
+      "empleado": "MORENO DOMINGUEZ NATALIA",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-07-31",
+      "regreso": "2026-08-10",
+      "observaciones": "",
+      "updated": "2026-05-28T13:29:13.506Z",
+      "created": "2026-05-28T13:29:13.506Z"
+    },
+    {
+      "id": "rmppj5pmd3n7l",
+      "empleado": "TAPIAS CORTES OSCAR DAVID",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-09-01",
+      "regreso": "2026-09-21",
+      "observaciones": "",
+      "updated": "2026-05-28T13:30:02.101Z",
+      "created": "2026-05-28T13:30:02.101Z"
+    },
+    {
+      "id": "rmppj7d1wc8hw",
+      "empleado": "ALDANA JIMENEZ CARLOS ALBERTO",
+      "cargo": "PROFESIONAL VISUAL SUPERNUMERARIO",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-06-05",
+      "regreso": "2026-06-30",
+      "observaciones": "",
+      "updated": "2026-05-28T13:31:19.124Z",
+      "created": "2026-05-28T13:31:19.124Z"
+    },
+    {
+      "id": "rmppj9f8azwfl",
+      "empleado": "GALINDO RIVERA YERLESY DAYANA",
+      "cargo": "PROFESIONAL PROJECT PLANNER",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-06-01",
+      "regreso": "2026-06-05",
+      "observaciones": "",
+      "updated": "2026-05-28T13:32:55.258Z",
+      "created": "2026-05-28T13:32:55.258Z"
+    },
+    {
+      "id": "rmppjbsbm1r53",
+      "empleado": "OLARTE LUQUE JUAN GABRIEL",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-08-10",
+      "regreso": "2026-08-31",
+      "observaciones": "",
+      "updated": "2026-05-28T13:34:45.538Z",
+      "created": "2026-05-28T13:34:45.538Z"
+    },
+    {
+      "id": "rmppjd9u51zxg",
+      "empleado": "CASTRO PEREZ SEBASTIAN ANDRES",
+      "cargo": "PROFESIONAL DE VISUAL SENIOR A",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-09-22",
+      "regreso": "2026-09-28",
+      "observaciones": "",
+      "updated": "2026-05-28T13:35:54.894Z",
+      "created": "2026-05-28T13:35:54.894Z"
+    },
+    {
+      "id": "rmppje08ddo18",
+      "empleado": "AREVALO ARROYO CARLOS ALBERTO",
+      "cargo": "PROFESIONAL DESARROLLADOR AUDIOVISUAL",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-06-22",
+      "regreso": "2026-06-30",
+      "observaciones": "",
+      "updated": "2026-05-28T13:36:29.101Z",
+      "created": "2026-05-28T13:36:29.101Z"
+    },
+    {
+      "id": "rmppjeiycyknw",
+      "empleado": "BENAVIDES PETRO JAVIER EMILIO",
+      "cargo": "PROFESIONAL DE VISUAL MASTER B",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-08-12",
+      "regreso": "2026-09-03",
+      "observaciones": "",
+      "updated": "2026-05-28T13:36:53.364Z",
+      "created": "2026-05-28T13:36:53.364Z"
+    },
+    {
+      "id": "rmppjg1pxks5m",
+      "empleado": "GUZMAN PEDROZO HAINER MILEP",
+      "cargo": "JEFE DE PORTAFOLIO",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-12-28",
+      "regreso": "2027-01-05",
+      "observaciones": "",
+      "updated": "2026-05-28T13:38:04.341Z",
+      "created": "2026-05-28T13:38:04.341Z"
+    }
+  ],
+  "cargos": [
+    "Administrador de Tienda",
+    "Subadministrador",
+    "Asesor Comercial",
+    "Cajero",
+    "Auxiliar de Bodega",
+    "Coordinador de Crédito",
+    "Asesor de Crédito",
+    "Auxiliar Administrativo",
+    "Visual Merchandiser",
+    "Supervisor de Ventas",
+    "DIRECTOR DE CATEGORIA DE PRODUCTO",
+    "DIRECTOR VISUAL MERCHANDISING",
+    "PROFESIONAL DE VISUAL MASTER A",
+    "JEFE DE PORTAFOLIO",
+    "PROFESIONAL DE VISUAL MASTER B",
+    "PROFESIONAL DE VISUAL SENIOR A",
+    "PROFESIONAL VISUAL SUPERNUMERARIO",
+    "PROFESIONAL PROJECT PLANNER",
+    "PROFESIONAL DESARROLLADOR AUDIOVISUAL"
+  ],
+  "created": "2026-05-25T16:55:20.857Z",
+  "updated": "2026-05-28T21:13:41.490Z"
+}
