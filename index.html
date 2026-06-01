@@ -2693,8 +2693,8 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   /* ============================================================
      2. CAPA DE PERSISTENCIA · localStorage
      ============================================================ */
-  const DB_KEY = 'jamar_db';
-  const DB_VERSION = 2; // v2: 5 tiendas + 89 empleados CMO + importar Excel
+  const DB_VERSION = 3; // v3: key versionada → invalida caché de versiones anteriores automáticamente
+  const DB_KEY = 'jamar_db_v' + DB_VERSION; // cada versión usa su propia key en localStorage
 
   /** IDs de las 5 tiendas oficiales de esta versión */
   const VALID_STORE_IDS = DEFAULT_STORES.map(s => s.id);
