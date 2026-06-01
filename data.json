@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "stores": [
     {
       "id": "s01",
@@ -666,42 +666,6 @@
   ],
   "records": [
     {
-      "id": "rmplg8n02dvzf",
-      "empleado": "JUAN CARLO MUÑOZ",
-      "cargo": "Administrador de Tienda",
-      "tienda": "s09",
-      "tipo": "vacaciones",
-      "salida": "2026-06-16",
-      "regreso": "2026-07-07",
-      "observaciones": "Cubrirá Sistina Herrera",
-      "updated": "2026-05-25T16:57:15.122Z",
-      "created": "2026-05-25T16:57:15.122Z"
-    },
-    {
-      "id": "rmplgc8yj9urh",
-      "empleado": "CATHERINE CONDE",
-      "cargo": "Administrador de Tienda",
-      "tienda": "s02",
-      "tipo": "vacaciones",
-      "salida": "2026-06-01",
-      "regreso": "2026-06-13",
-      "observaciones": "Cubrirá Fredy De Alba",
-      "updated": "2026-05-25T17:01:22.020Z",
-      "created": "2026-05-25T17:00:03.547Z"
-    },
-    {
-      "id": "rmplgdpz6udcu",
-      "empleado": "HIBETH LOPEZ",
-      "cargo": "Administrador de Tienda",
-      "tienda": "s12",
-      "tipo": "vacaciones",
-      "salida": "2026-06-16",
-      "regreso": "2026-06-27",
-      "observaciones": "Cubrirá \tFredy De Alba",
-      "updated": "2026-05-25T17:01:12.258Z",
-      "created": "2026-05-25T17:01:12.258Z"
-    },
-    {
       "id": "rmppihv706lcw",
       "empleado": "PAEZ BARRANCO DALILA MARIA",
       "cargo": "DIRECTOR VISUAL MERCHANDISING",
@@ -1036,5 +1000,5 @@
     "PROFESIONAL DESARROLLADOR AUDIOVISUAL"
   ],
   "created": "2026-05-25T16:55:20.857Z",
-  "updated": "2026-05-28T14:31:57.390Z"
+  "updated": "2026-06-01T16:35:51.904Z"
 }
