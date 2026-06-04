@@ -662,6 +662,12 @@
       "nombre": "CASTRO PEREZ SEBASTIAN ANDRES",
       "cargo": "PROFESIONAL DE VISUAL SENIOR A",
       "tienda": "s01"
+    },
+    {
+      "id": "empzjil2x",
+      "nombre": "MORA ARENGAS LEIDY PAOLA",
+      "cargo": "ESPECIALISTA DE NAVEGACION COMERCIAL",
+      "tienda": "s01"
     }
   ],
   "records": [
@@ -976,6 +982,30 @@
       "observaciones": "",
       "updated": "2026-05-28T13:38:04.341Z",
       "created": "2026-05-28T13:38:04.341Z"
+    },
+    {
+      "id": "rmpzjh16px6yn",
+      "empleado": "REALES NAVARRO MARISELA ESTHER",
+      "cargo": "ESPECIALISTA DE NAVEGACION COMERCIAL",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-06-30",
+      "regreso": "2026-07-07",
+      "observaciones": "",
+      "updated": "2026-06-04T13:36:32.065Z",
+      "created": "2026-06-04T13:36:32.067Z"
+    },
+    {
+      "id": "rmpzjil2wbgp9",
+      "empleado": "MORA ARENGAS LEIDY PAOLA",
+      "cargo": "ESPECIALISTA DE NAVEGACION COMERCIAL",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-06-16",
+      "regreso": "2026-07-01",
+      "observaciones": "",
+      "updated": "2026-06-04T13:37:44.504Z",
+      "created": "2026-06-04T13:37:44.504Z"
     }
   ],
   "cargos": [
@@ -997,8 +1027,9 @@
     "PROFESIONAL DE VISUAL SENIOR A",
     "PROFESIONAL VISUAL SUPERNUMERARIO",
     "PROFESIONAL PROJECT PLANNER",
-    "PROFESIONAL DESARROLLADOR AUDIOVISUAL"
+    "PROFESIONAL DESARROLLADOR AUDIOVISUAL",
+    "ESPECIALISTA DE NAVEGACION COMERCIAL"
   ],
   "created": "2026-05-25T16:55:20.857Z",
-  "updated": "2026-06-01T16:35:51.904Z"
+  "updated": "2026-06-04T13:37:44.505Z"
 }
