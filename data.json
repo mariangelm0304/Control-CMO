@@ -668,6 +668,30 @@
       "nombre": "MORA ARENGAS LEIDY PAOLA",
       "cargo": "ESPECIALISTA DE NAVEGACION COMERCIAL",
       "tienda": "s01"
+    },
+    {
+      "id": "emrc4oc0t",
+      "nombre": "ACEVEDO SANABRIA MARIA EUGENIA",
+      "cargo": "ESPECIALISTA DE NAVEGACION COMERCIAL",
+      "tienda": "s01"
+    },
+    {
+      "id": "emrc84zyd",
+      "nombre": "BETANCOURT TOVAR MARIA CAMILA",
+      "cargo": "DIRECTOR DE CATEGORIA DE PRODUCTO",
+      "tienda": "s01"
+    },
+    {
+      "id": "emrc88pad",
+      "nombre": "CUETO VILLA STEPHANIE MILENE",
+      "cargo": "COORDINADOR DE CALIDAD DE PROCESOS CREDITO",
+      "tienda": "s01"
+    },
+    {
+      "id": "emrc8a3ul",
+      "nombre": "DE LA HOZ GÓMEZ VIRGILIO",
+      "cargo": "DIRECTOR DE ANÁLISIS Y OTORGAMIENTO",
+      "tienda": "s01"
     }
   ],
   "records": [
@@ -1006,6 +1030,162 @@
       "observaciones": "",
       "updated": "2026-06-04T13:37:44.504Z",
       "created": "2026-06-04T13:37:44.504Z"
+    },
+    {
+      "id": "rmrc4g8lr9uew",
+      "empleado": "MARQUEZ VARGAS HEIDY PATRICIA",
+      "cargo": "DIRECTOR DE RETENCION",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-06-30",
+      "regreso": "2026-07-11",
+      "observaciones": "",
+      "updated": "2026-07-08T13:36:43.407Z",
+      "created": "2026-07-08T13:36:43.408Z"
+    },
+    {
+      "id": "rmrc4h1ffp4f1",
+      "empleado": "CORTES PORTELA DIANA PATRICIA",
+      "cargo": "DIRECTOR DE TRADE MARCA",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-07-16",
+      "regreso": "2026-07-21",
+      "observaciones": "",
+      "updated": "2026-07-08T13:37:20.764Z",
+      "created": "2026-07-08T13:37:20.764Z"
+    },
+    {
+      "id": "rmrc4iqvpy2nm",
+      "empleado": "JURADO MORALES JOSE ANTONIO",
+      "cargo": "ESPECIALISTA EN PLATAFORMA DE CANALES",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-03-01",
+      "regreso": "2026-03-31",
+      "observaciones": "",
+      "updated": "2026-07-08T13:38:40.405Z",
+      "created": "2026-07-08T13:38:40.405Z"
+    },
+    {
+      "id": "rmrc4oc0t0c7k",
+      "empleado": "ACEVEDO SANABRIA MARIA EUGENIA",
+      "cargo": "ESPECIALISTA DE NAVEGACION COMERCIAL",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-08-06",
+      "regreso": "2026-08-28",
+      "observaciones": "",
+      "updated": "2026-07-08T13:43:01.085Z",
+      "created": "2026-07-08T13:43:01.085Z"
+    },
+    {
+      "id": "rmrc4qbu9hhuh",
+      "empleado": "GARCIA PALMET FANNY ESTHER",
+      "cargo": "JEFE TRADE MARKETING",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-12-21",
+      "regreso": "2027-01-14",
+      "observaciones": "",
+      "updated": "2026-07-08T13:44:34.161Z",
+      "created": "2026-07-08T13:44:34.161Z"
+    },
+    {
+      "id": "rmrc7vlfillzt",
+      "empleado": "CARRILLO CAMACHO KAREN DAYANA",
+      "cargo": "ANALISTA DE MERCADEO Y ALIANZAS",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-06-26",
+      "regreso": "2026-07-08",
+      "observaciones": "",
+      "updated": "2026-07-08T15:12:38.718Z",
+      "created": "2026-07-08T15:12:38.719Z"
+    },
+    {
+      "id": "rmrc7ykc1j5r2",
+      "empleado": "VALLEJO ROCHA VALENTINA",
+      "cargo": "PROFESIONAL DECORA",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-07-21",
+      "regreso": "2026-07-28",
+      "observaciones": "",
+      "updated": "2026-07-08T15:14:57.265Z",
+      "created": "2026-07-08T15:14:57.265Z"
+    },
+    {
+      "id": "rmrc80oatjd4j",
+      "empleado": "DUQUE DUQUE YURI MARCELA",
+      "cargo": "ANALISTA DE MICROMERCADEO Y ALIANZAS",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-05-29",
+      "regreso": "2026-06-13",
+      "observaciones": "",
+      "updated": "2026-07-08T15:16:35.717Z",
+      "created": "2026-07-08T15:16:35.717Z"
+    },
+    {
+      "id": "rmrc84zydvkxk",
+      "empleado": "BETANCOURT TOVAR MARIA CAMILA",
+      "cargo": "DIRECTOR DE CATEGORIA DE PRODUCTO",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-09-07",
+      "regreso": "2026-09-15",
+      "observaciones": "",
+      "updated": "2026-07-08T15:19:57.445Z",
+      "created": "2026-07-08T15:19:57.445Z"
+    },
+    {
+      "id": "rmrc85s9rsuld",
+      "empleado": "HERNANDEZ RODRIGUEZ ALEX JAIR",
+      "cargo": "ANALISTA SISTEMATICA COMERCIAL",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-12-21",
+      "regreso": "2027-01-14",
+      "observaciones": "",
+      "updated": "2026-07-08T15:20:34.143Z",
+      "created": "2026-07-08T15:20:34.143Z"
+    },
+    {
+      "id": "rmrc88pacoop6",
+      "empleado": "CUETO VILLA STEPHANIE MILENE",
+      "cargo": "COORDINADOR DE CALIDAD DE PROCESOS CREDITO",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-08-24",
+      "regreso": "2026-09-02",
+      "observaciones": "",
+      "updated": "2026-07-08T15:22:50.244Z",
+      "created": "2026-07-08T15:22:50.244Z"
+    },
+    {
+      "id": "rmrc898gk3f1w",
+      "empleado": "CUETO VILLA STEPHANIE MILENE",
+      "cargo": "COORDINADOR DE CALIDAD DE PROCESOS CREDITO",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-12-28",
+      "regreso": "2027-01-07",
+      "observaciones": "",
+      "updated": "2026-07-08T15:23:15.092Z",
+      "created": "2026-07-08T15:23:15.092Z"
+    },
+    {
+      "id": "rmrc8a3ulgavv",
+      "empleado": "DE LA HOZ GÓMEZ VIRGILIO",
+      "cargo": "DIRECTOR DE ANÁLISIS Y OTORGAMIENTO",
+      "tienda": "s01",
+      "tipo": "vacaciones",
+      "salida": "2026-09-14",
+      "regreso": "2026-09-18",
+      "observaciones": "",
+      "updated": "2026-07-08T15:23:55.773Z",
+      "created": "2026-07-08T15:23:55.773Z"
     }
   ],
   "cargos": [
@@ -1028,8 +1208,18 @@
     "PROFESIONAL VISUAL SUPERNUMERARIO",
     "PROFESIONAL PROJECT PLANNER",
     "PROFESIONAL DESARROLLADOR AUDIOVISUAL",
-    "ESPECIALISTA DE NAVEGACION COMERCIAL"
+    "ESPECIALISTA DE NAVEGACION COMERCIAL",
+    "DIRECTOR DE RETENCION",
+    "DIRECTOR DE TRADE MARCA",
+    "ESPECIALISTA EN PLATAFORMA DE CANALES",
+    "JEFE TRADE MARKETING",
+    "ANALISTA DE MERCADEO Y ALIANZAS",
+    "PROFESIONAL DECORA",
+    "ANALISTA DE MICROMERCADEO Y ALIANZAS",
+    "ANALISTA SISTEMATICA COMERCIAL",
+    "COORDINADOR DE CALIDAD DE PROCESOS CREDITO",
+    "DIRECTOR DE ANÁLISIS Y OTORGAMIENTO"
   ],
   "created": "2026-05-25T16:55:20.857Z",
-  "updated": "2026-06-04T13:37:44.505Z"
+  "updated": "2026-07-08T15:23:55.773Z"
 }
