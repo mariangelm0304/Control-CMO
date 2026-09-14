@@ -1228,18 +1228,6 @@
       "observaciones": "",
       "updated": "2026-08-20T12:56:30.958Z",
       "created": "2026-08-20T12:56:30.958Z"
-    },
-    {
-      "id": "rmtsnrh3t44vz",
-      "empleado": "DE LA HOZ GÓMEZ VIRGILIO",
-      "cargo": "DIRECTOR DE ANÁLISIS Y OTORGAMIENTO",
-      "tienda": "s01",
-      "tipo": "vacaciones",
-      "salida": "2026-09-14",
-      "regreso": "2026-09-18",
-      "observaciones": "",
-      "updated": "2026-09-08T12:41:03.833Z",
-      "created": "2026-09-08T12:41:03.833Z"
     }
   ],
   "cargos": [
@@ -1279,5 +1267,5 @@
     "JEFE DE SISTEMATICA COMERCIAL"
   ],
   "created": "2026-05-25T16:55:20.857Z",
-  "updated": "2026-09-08T12:45:04.781Z"
+  "updated": "2026-09-14T19:45:31.820Z"
 }
